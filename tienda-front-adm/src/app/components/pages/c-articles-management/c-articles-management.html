@@ -1,0 +1,104 @@
+<div class="c-articles-management" aria-label="Gestión de productos">
+  <!-- Header -->
+  <header class="c-articles-management__header">
+    <div class="c-articles-management__actions">
+      <button class="c-articles-management__btn c-articles-management__btn--primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+        </svg>
+        New Product
+      </button>
+      <button class="c-articles-management__btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
+          viewBox="0 0 16 16">
+          <path
+            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+          <path
+            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+        </svg>
+        Export
+      </button>
+    </div>
+
+    <form class="c-articles-management__search" role="search" (submit)="$event.preventDefault()">
+      <input class="c-articles-management__input" type="search" placeholder="Search name" [(ngModel)]="searchTerm" />
+      <button class="c-articles-management__btn" type="submit">Search</button>
+    </form>
+
+    <div class="c-articles-management__perpage">
+      <label for="per-page">Results:</label>
+      <select id="per-page" class="c-articles-management__select" [(ngModel)]="pageSize" (change)="loadArticles(1)">
+        <option [value]="10">10</option>
+        <option [value]="25">25</option>
+        <option [value]="50">50</option>
+        <option [value]="100">100</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Tabla -->
+  <section class="c-articles-management__table-section">
+    <table class="c-articles-management__table">
+      <thead class="c-articles-management__table-head">
+        <tr class="c-articles-management__table-row">
+          <th class="c-articles-management__table-cell">ID</th>
+          <th class="c-articles-management__table-cell">Nombre</th>
+          <th class="c-articles-management__table-cell">Precio</th>
+          <th class="c-articles-management__table-cell">Precio Descuento</th>
+          <th class="c-articles-management__table-cell">Imagen</th>
+          <th class="c-articles-management__table-cell">Marca</th>
+          <th class="c-articles-management__table-cell">Categoría</th>
+          <th class="c-articles-management__table-cell">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="c-articles-management__table-body">
+        @for (product of articles; track product.productId) {
+        @if (product.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        <tr class="c-articles-management__table-row">
+          <td class="c-articles-management__table-cell">{{ product.productId }}</td>
+          <td class="c-articles-management__table-cell"><a class="c-articles-management__table-link" routerLink="/modify/{{product.productId}}">{{ product.name }}</a></td>
+          <td class="c-articles-management__table-cell">{{ product.price | currency:'EUR' }}</td>
+          <td class="c-articles-management__table-cell">{{ product.discountedPrice | currency:'EUR' }}</td>
+          <td class="c-articles-management__table-cell">
+            <img [src]="'img/' + product.pictureProduct" alt="{{ product.name }}" width="50" />
+          </td>
+          <td class="c-articles-management__table-cell">{{ product.brand }}</td>
+          <td class="c-articles-management__table-cell">{{ product.categoryId }}</td>
+          <td class="c-articles-management__table-cell">
+            <div class="c-articles-management__actions-row">
+              <button class="c-articles-management__iconbtn"
+                (click)="deleteArticle(product.productId)"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                  height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
+                </svg></button>
+            </div>
+          </td>
+        </tr>
+        }
+        }
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer class="c-articles-management__footer">
+    <nav class="c-articles-management__pagination" role="navigation" aria-label="Paginación">
+      @for (p of pages; track p) {
+      <button class="c-articles-management__page" [class.c-articles-management__page--active]="pageNumber === p"
+        (click)="changePage(p)">
+        {{ p }}
+      </button>
+      }
+    </nav>
+    <div class="c-articles-management__count">
+      Mostrando página {{ pageNumber }} de {{ pages.length }}
+    </div>
+  </footer>
+</div>
+
+@if (selectedProduct) {
+<app-c-detail-article [product]="selectedProduct" (closeDetail)="closeDetail()"></app-c-detail-article>
+}

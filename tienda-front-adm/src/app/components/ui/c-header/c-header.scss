@@ -1,0 +1,65 @@
+.c-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+  padding: 0 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #cccccc;
+}
+
+
+.c-header__left,
+.c-header__center,
+.c-header__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Branding */
+.c-header__brand {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c-header__brand-logo img {
+  width: 80px;
+  height: auto;
+}
+
+.c-header__brand-name {
+  font-weight: 700;
+  font-size: 18px;
+  color: #000000;
+}
+
+/* Centro */
+.c-header__icon svg {
+  width: 32px;
+  height: 32px;
+  color: #000000;
+}
+
+.c-header__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+}
+
+/* Perfil */
+.c-header__profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.c-header__profile-avatar svg {
+  width: 32px;
+  height: 32px;
+  color: #000000;
+}

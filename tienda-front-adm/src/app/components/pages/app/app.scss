@@ -1,0 +1,20 @@
+.c-admin-layout {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 60px); // si el header mide 60px
+  overflow: hidden;
+}
+
+app-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--bg-soft);
+  border-right: 1px solid var(--border);
+}
+
+.c-admin-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: var(--bg);
+}

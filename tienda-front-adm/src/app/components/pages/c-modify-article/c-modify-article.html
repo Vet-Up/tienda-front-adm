@@ -1,0 +1,55 @@
+<div class="c-modify-article">
+  <!-- Header -->
+  <header class="c-modify-article__header">
+    <h2 class="c-modify-article__title">Modificar Producto</h2>
+    <button class="c-modify-article__close" (click)="cancel()">✕</button>
+  </header>
+
+  <!-- Formulario -->
+  <form class="c-modify-article__form" (ngSubmit)="saveChanges()">
+    
+    <div class="c-modify-article__group">
+      <label class="c-modify-article__label" for="name">Nombre</label>
+      <input class="c-modify-article__input" id="name" type="text" [(ngModel)]="article.name" name="name" required />
+    </div>
+
+    <div class="c-modify-article__group">
+      <label class="c-modify-article__label" for="productDescription">Descripción</label>
+      <textarea class="c-modify-article__textarea" id="productDescription" [(ngModel)]="article.productDescription" name="productDescription"></textarea>
+    </div>
+
+    <div class="c-modify-article__group">
+      <label class="c-modify-article__label" for="price">Precio (€)</label>
+      <input class="c-modify-article__input" id="price" type="number" [(ngModel)]="article.price" name="price" required />
+    </div>
+
+    <div class="c-modify-article__group">
+      <label class="c-modify-article__label" for="discountedPrice">Precio con descuento (€)</label>
+      <input class="c-modify-article__input" id="discountedPrice" type="number" [(ngModel)]="article.discountedPrice" name="discountedPrice" />
+    </div>
+
+    <div class="c-modify-article__group">
+      <label class="c-modify-article__label" for="pictureProduct">Imagen (URL)</label>
+      <input class="c-modify-article__input" id="pictureProduct" type="text" [(ngModel)]="article.pictureProduct" name="pictureProduct" />
+    </div>
+
+    <div class="c-modify-article__group">
+      <label class="c-modify-article__label" for="brand">Marca</label>
+      <input class="c-modify-article__input" id="brand" type="text" [(ngModel)]="article.brand" name="brand" />
+    </div>
+
+    <div class="c-modify-article__group">
+      <label class="c-modify-article__label" for="categoryId">Categoría ID</label>
+      <input class="c-modify-article__input" id="categoryId" type="number" [(ngModel)]="article.categoryId" name="categoryId" />
+    </div>
+
+    <div class="c-modify-article__actions">
+      <button class="c-modify-article__btn c-modify-article__btn--primary" type="submit">
+        Guardar cambios
+      </button>
+      <button class="c-modify-article__btn" type="button" (click)="cancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

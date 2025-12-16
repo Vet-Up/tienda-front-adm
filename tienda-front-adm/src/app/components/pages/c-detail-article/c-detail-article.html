@@ -1,0 +1,25 @@
+<div class="c-detail-overlay" (click)="close()">
+  <div class="c-detail-card" (click)="$event.stopPropagation()">
+    <button class="c-detail-card__close" (click)="close()">×</button>
+    
+    <div class="c-detail-card__content">
+      <img [src]="'img/' + product.pictureProduct" [alt]="product.name" class="c-detail-card__img">
+      
+      <div class="c-detail-card__info">
+        <h2 class="c-detail-card__title">{{ product.name }}</h2>
+        <p class="c-detail-card__brand">Marca: {{ product.brand }}</p>
+        
+        <div class="c-detail-card__pricing">
+          <p [class.c-detail-card__old-price]="product.discountedPrice">
+            {{ product.price | currency:'EUR' }}
+          </p>
+          @if (product.discountedPrice) {
+            <p class="c-detail-card__discount">
+              Oferta: {{ product.discountedPrice | currency:'EUR' }}
+            </p>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
