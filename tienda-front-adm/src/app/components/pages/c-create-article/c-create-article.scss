@@ -1,0 +1,82 @@
+.c-create-article {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  background-color: #fafafa;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.c-create-article__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-create-article__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.c-create-article__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.c-create-article__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c-create-article__label {
+  font-weight: 600;
+  color: #222;
+}
+
+.c-create-article__input,
+.c-create-article__textarea {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.c-create-article__textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.c-create-article__actions {
+  display: flex;
+  gap: 16px;
+}
+
+.c-create-article__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.c-create-article__btn--primary {
+  background-color: #002647;
+  color: #fff;
+  border-color: #002647;
+}
+
+.c-create-article__btn:disabled {
+  background-color: #aaa;
+  border-color: #aaa;
+  cursor: not-allowed;
+}

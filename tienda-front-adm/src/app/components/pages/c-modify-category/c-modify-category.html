@@ -1,0 +1,31 @@
+<div class="c-modify-category">
+  <header class="c-modify-category__header">
+    <h2 class="c-modify-category__title">Editar Categoría</h2>
+  </header>
+
+  @if (isLoading) {
+    <p>Cargando...</p>
+  } @else {
+    <form class="c-modify-category__form" (ngSubmit)="saveCategory()">
+      <div class="c-modify-category__form-group">
+        <label for="categoryId">ID</label>
+        <input id="categoryId" type="text" [value]="category.categoryId" disabled />
+      </div>
+
+      <div class="c-modify-category__form-group">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" [(ngModel)]="category.name" name="name" required />
+      </div>
+
+      <div class="c-modify-category__form-group">
+        <label for="description">Descripción</label>
+        <textarea id="description" [(ngModel)]="category.description" name="description"></textarea>
+      </div>
+
+      <div class="c-modify-category__actions">
+        <button type="button" class="c-modify-category__btn" (click)="cancel()">Cancelar</button>
+        <button type="submit" class="c-modify-category__btn c-modify-category__btn--primary">Guardar</button>
+      </div>
+    </form>
+  }
+</div>

@@ -2,7 +2,7 @@
   <!-- Header -->
   <header class="c-articles-management__header">
     <div class="c-articles-management__actions">
-      <button class="c-articles-management__btn c-articles-management__btn--primary">
+      <button class="c-articles-management__btn c-articles-management__btn--primary" routerLink="/create-article">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
           viewBox="0 0 16 16">
           <path fill-rule="evenodd"
@@ -10,7 +10,7 @@
         </svg>
         New Product
       </button>
-      <button class="c-articles-management__btn">
+      <button class="c-articles-management__btn" (click)="exportToPdf()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
           viewBox="0 0 16 16">
           <path
@@ -22,10 +22,20 @@
       </button>
     </div>
 
-    <form class="c-articles-management__search" role="search" (submit)="$event.preventDefault()">
-      <input class="c-articles-management__input" type="search" placeholder="Search name" [(ngModel)]="searchTerm" />
-      <button class="c-articles-management__btn" type="submit">Search</button>
-    </form>
+    <div class="c-articles-management__search">
+      <input class="c-articles-management__input" type="search" placeholder="Search name" name="searchTerm"
+        [(ngModel)]="searchTerm" />
+    </div>
+
+    <div class="c-articles-management__filter">
+      <label for="category-filter">Categoría:</label>
+      <select id="category-filter" class="c-articles-management__select" name="selectedCategory" [(ngModel)]="selectedCategory" (change)="loadArticles(1)">
+        <option [value]="0">Todas</option>
+        @for (cat of categories; track cat.categoryId) {
+          <option [value]="cat.categoryId">{{ cat.name }}</option>
+        }
+      </select>
+    </div>
 
     <div class="c-articles-management__perpage">
       <label for="per-page">Results:</label>
@@ -54,11 +64,11 @@
         </tr>
       </thead>
       <tbody class="c-articles-management__table-body">
-        @for (product of articles; track product.productId) {
-        @if (product.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        @for (product of filteredArticles; track product.productId) {
         <tr class="c-articles-management__table-row">
           <td class="c-articles-management__table-cell">{{ product.productId }}</td>
-          <td class="c-articles-management__table-cell"><a class="c-articles-management__table-link" routerLink="/modify/{{product.productId}}">{{ product.name }}</a></td>
+          <td class="c-articles-management__table-cell"><a class="c-articles-management__table-link"
+              routerLink="/modify-article/{{product.productId}}">{{ product.name }}</a></td>
           <td class="c-articles-management__table-cell">{{ product.price | currency:'EUR' }}</td>
           <td class="c-articles-management__table-cell">{{ product.discountedPrice | currency:'EUR' }}</td>
           <td class="c-articles-management__table-cell">
@@ -68,16 +78,15 @@
           <td class="c-articles-management__table-cell">{{ product.categoryId }}</td>
           <td class="c-articles-management__table-cell">
             <div class="c-articles-management__actions-row">
-              <button class="c-articles-management__iconbtn"
-                (click)="deleteArticle(product.productId)"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                  height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+              <button class="c-articles-management__iconbtn" (click)="deleteArticle(product.productId)"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-trash3-fill" viewBox="0 0 16 16">
                   <path
                     d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
                 </svg></button>
             </div>
           </td>
         </tr>
-        }
         }
       </tbody>
     </table>
@@ -98,7 +107,3 @@
     </div>
   </footer>
 </div>
-
-@if (selectedProduct) {
-<app-c-detail-article [product]="selectedProduct" (closeDetail)="closeDetail()"></app-c-detail-article>
-}
