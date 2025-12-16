@@ -51,7 +51,7 @@ export class CModifyArticle implements OnInit {
     this.articleService.update(this.article.productId, this.article).subscribe({
       next: (response) => {
         console.log('Artículo actualizado correctamente', response);
-        this.router.navigate(['/articles']);
+        this.router.navigate(['/products']);
       },
       error: (err) => {
         console.error('Error al actualizar artículo', err);
@@ -60,6 +60,6 @@ export class CModifyArticle implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/articles']);
+    this.router.navigate(['/products']);
   }
 }

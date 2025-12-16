@@ -1,70 +1,101 @@
 .c-welcome {
+  --welcome-font-family: var(--mlt-sys-font-family-primary);
+  --welcome-title-font-family: var(--mlt-sys-font-family-heading);
+  --welcome-height: calc(100vh - var(--mlt-sys-size-header-height));
+  --welcome-bg: var(--mlt-sys-color-gray-100);
+  --welcome-border: var(--mlt-sys-color-border);
+  --welcome-content-padding: var(--mlt-sys-spacing-9);
+  --welcome-content-bg: var(--mlt-sys-color-white);
+  --welcome-content-radius: var(--mlt-sys-radius-lg);
+  --welcome-content-shadow: var(--mlt-sys-shadow-md);
+  --welcome-img-max-width: 200px;
+  --welcome-img-margin-bottom: var(--mlt-sys-spacing-6);
+  --welcome-img-radius: var(--mlt-sys-radius-lg);
+  --welcome-img-shadow: var(--mlt-sys-shadow-sm);
+  --welcome-title-size: var(--mlt-sys-font-size-12);
+  --welcome-title-weight: var(--mlt-sys-font-weight-bold);
+  --welcome-title-color: var(--mlt-sys-color-primary);
+  --welcome-title-margin: var(--mlt-sys-spacing-4);
+  --welcome-subtitle-size: var(--mlt-sys-font-size-5);
+  --welcome-subtitle-color: var(--mlt-sys-color-gray-800);
+  --welcome-subtitle-margin: var(--mlt-sys-spacing-7);
+  --welcome-actions-gap: var(--mlt-sys-spacing-4);
+  --welcome-btn-padding-v: var(--mlt-sys-spacing-3);
+  --welcome-btn-padding-h: var(--mlt-sys-spacing-6);
+  --welcome-btn-size: var(--mlt-sys-font-size-4);
+  --welcome-btn-weight: var(--mlt-sys-font-weight-semibold);
+  --welcome-btn-color: var(--mlt-sys-color-white);
+  --welcome-btn-bg: var(--mlt-sys-color-primary);
+  --welcome-btn-bg-hover: var(--mlt-sys-color-primary-dark);
+  --welcome-btn-radius: var(--mlt-sys-radius-md);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 75px); 
-  background: #f5f7fa; 
-  border: 1px solid rgba(0, 0, 0, 0.05); 
-  
+  height: var(--welcome-height);
+  background: var(--welcome-bg);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: var(--welcome-font-family);
 
   &__content {
     text-align: center;
     max-width: 600px;
-    padding: 40px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: var(--welcome-content-padding);
+    background: var(--welcome-content-bg);
+    border-radius: var(--welcome-content-radius);
+    box-shadow: var(--welcome-content-shadow);
   }
 
   &__image {
-  display: block;
-  max-width: 200px;
-  margin: 0 auto 24px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
+    display: block;
+    max-width: var(--welcome-img-max-width);
+    margin: 0 auto var(--welcome-img-margin-bottom);
+    border-radius: var(--welcome-img-radius);
+    box-shadow: var(--welcome-img-shadow);
+  }
 
   &__title {
-    font-size: 32px;
-    font-weight: 700;
-    color: #004080; 
-    margin-bottom: 16px;
+    font-family: var(--welcome-title-font-family);
+    font-size: var(--welcome-title-size);
+    font-weight: var(--welcome-title-weight);
+    color: var(--welcome-title-color);
+    margin-bottom: var(--welcome-title-margin);
   }
 
   &__subtitle {
-    font-size: 18px;
-    color: #333333; 
-    margin-bottom: 32px;
+    font-size: var(--welcome-subtitle-size);
+    color: var(--welcome-subtitle-color);
+    margin-bottom: var(--welcome-subtitle-margin);
   }
 
   &__actions {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: var(--welcome-actions-gap);
   }
 
   &__btn {
     display: inline-block;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    background: #004080;
-    border-radius: 6px;
+    padding: var(--welcome-btn-padding-v) var(--welcome-btn-padding-h);
+    font-size: var(--welcome-btn-size);
+    font-weight: var(--welcome-btn-weight);
+    color: var(--welcome-btn-color);
+    background: var(--welcome-btn-bg);
+    border-radius: var(--welcome-btn-radius);
     text-decoration: none;
     transition: background 0.3s ease, transform 0.2s ease;
 
     &:hover {
-      background: #003366; 
+      background: var(--welcome-btn-bg-hover);
       transform: translateY(-2px);
       cursor: pointer;
     }
 
     &--secondary {
-      background: #008080; 
+      background: #008080;
 
       &:hover {
-        background: #006666; 
+        background: #006666;
       }
     }
   }

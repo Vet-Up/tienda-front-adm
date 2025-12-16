@@ -6,14 +6,17 @@ import { CCreateArticle } from '../c-create-article/c-create-article';
 import { CCategoriesManagement } from '../c-categories-management/c-categories-management';
 import { CModifyCategory } from '../c-modify-category/c-modify-category';
 import { CCreateCategory } from '../c-create-category/c-create-category';
+import { CNotFound } from '../c-not-found/c-not-found';
 
 export const routes: Routes = [
-    { path: '',component:CWelcome},
-    { path: 'welcome',component:CWelcome},
-    { path: 'articles',component:CArticlesManagement},
-    { path: 'modify-article/:productId',component:CModifyArticle},
-    { path: 'create-article',component:CCreateArticle},
-    { path: 'categories',component:CCategoriesManagement},
-    { path: 'modify-category/:categoryId',component:CModifyCategory},
-    { path: 'create-category',component:CCreateCategory}
+    { path: '', component: CWelcome },
+    { path: 'dashboard', component: CWelcome },
+    { path: 'products', component: CArticlesManagement },
+    { path: 'products/:productId/edit', component: CModifyArticle },
+    { path: 'products/new', component: CCreateArticle },
+    { path: 'categories', component: CCategoriesManagement },
+    { path: 'categories/:categoryId/edit', component: CModifyCategory },
+    { path: 'categories/new', component: CCreateCategory },
+    { path: 'not-found', component: CNotFound },
+    { path: '**', component: CNotFound } 
 ];

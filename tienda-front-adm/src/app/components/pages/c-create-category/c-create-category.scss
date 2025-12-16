@@ -1,12 +1,38 @@
 .c-create-category {
+  --create-category-gap: var(--mlt-sys-spacing-6);
+  --create-category-padding: var(--mlt-sys-spacing-7);
+  --create-category-bg: var(--mlt-sys-color-background);
+  --create-category-font-size: var(--mlt-sys-font-size-4);
+  --create-category-radius: var(--mlt-sys-radius-lg);
+  --create-category-border: var(--mlt-sys-color-border);
+  --create-category-title-size: var(--mlt-sys-font-size-8);
+  --create-category-title-weight: var(--mlt-sys-font-weight-semibold);
+  --create-category-title-color: var(--mlt-sys-color-gray-800);
+  --create-category-form-gap: var(--mlt-sys-spacing-5);
+  --create-category-group-gap: var(--mlt-sys-spacing-1);
+  --create-category-label-weight: var(--mlt-sys-font-weight-semibold);
+  --create-category-label-color: var(--mlt-sys-color-gray-900);
+  --create-category-input-padding-v: var(--mlt-sys-spacing-3);
+  --create-category-input-padding-h: var(--mlt-sys-spacing-4);
+  --create-category-input-border: var(--mlt-sys-color-gray-400);
+  --create-category-input-radius: var(--mlt-sys-radius-md);
+  --create-category-textarea-min-height: 100px;
+  --create-category-actions-gap: var(--mlt-sys-spacing-4);
+  --create-category-btn-gap: var(--mlt-sys-spacing-2);
+  --create-category-btn-padding-v: var(--mlt-sys-spacing-3);
+  --create-category-btn-padding-h: var(--mlt-sys-spacing-5);
+  --create-category-btn-bg: var(--mlt-sys-color-gray-100);
+  --create-category-btn-primary-bg: var(--mlt-sys-color-primary);
+  --create-category-btn-primary-color: var(--mlt-sys-color-white);
+
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 32px;
-  background-color: #fafafa;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  gap: var(--create-category-gap);
+  padding: var(--create-category-padding);
+  background-color: var(--create-category-bg);
+  font-size: var(--create-category-font-size);
+  border-radius: var(--create-category-radius);
+  border: 1px solid var(--create-category-border);
 }
 
 .c-create-category__header {
@@ -16,63 +42,63 @@
 }
 
 .c-create-category__title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #333;
+  font-size: var(--create-category-title-size);
+  font-weight: var(--create-category-title-weight);
+  color: var(--create-category-title-color);
 }
 
 .c-create-category__form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--create-category-form-gap);
 }
 
 .c-create-category__group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--create-category-group-gap);
 }
 
 .c-create-category__label {
-  font-weight: 600;
-  color: #222;
+  font-weight: var(--create-category-label-weight);
+  color: var(--create-category-label-color);
 }
 
 .c-create-category__input,
 .c-create-category__textarea {
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: var(--create-category-input-padding-v) var(--create-category-input-padding-h);
+  border: 1px solid var(--create-category-input-border);
+  border-radius: var(--create-category-input-radius);
+  font-size: var(--create-category-font-size);
 }
 
 .c-create-category__textarea {
-  min-height: 100px;
+  min-height: var(--create-category-textarea-min-height);
   resize: vertical;
 }
 
 .c-create-category__actions {
   display: flex;
-  gap: 16px;
+  gap: var(--create-category-actions-gap);
 }
 
 .c-create-category__btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
+  gap: var(--create-category-btn-gap);
+  padding: var(--create-category-btn-padding-v) var(--create-category-btn-padding-h);
+  border: 1px solid var(--create-category-input-border);
+  background-color: var(--create-category-btn-bg);
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: var(--create-category-input-radius);
+  font-size: var(--create-category-font-size);
 }
 
 .c-create-category__btn--primary {
-  background-color: #002647;
-  color: #fff;
-  border-color: #002647;
+  background-color: var(--create-category-btn-primary-bg);
+  color: var(--create-category-btn-primary-color);
+  border-color: var(--create-category-btn-primary-bg);
 }
 
 .c-create-category__btn:disabled {

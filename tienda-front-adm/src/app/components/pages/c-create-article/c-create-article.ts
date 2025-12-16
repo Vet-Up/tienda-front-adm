@@ -29,7 +29,7 @@ export class CCreateArticle {
     this.articleService.create(this.article).subscribe({
       next: (response) => {
         console.log('Artículo creado correctamente', response);
-        this.router.navigate(['/articles']);
+        this.router.navigate(['/products']);
       },
       error: (err) => {
         console.error('Error al crear artículo', err);
@@ -38,6 +38,6 @@ export class CCreateArticle {
   }
 
   cancel(): void {
-    this.router.navigate(['/articles']);
+    this.router.navigate(['/products']);
   }
 }

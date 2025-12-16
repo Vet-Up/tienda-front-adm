@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { CHeader, } from "../../ui/c-header/c-header";
 import { CSidebar } from '../../ui/c-sidebar/c-sidebar';
-import { CWelcome } from '../c-welcome/c-welcome';
+
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, CHeader, CSidebar,CWelcome],
+  imports: [RouterOutlet, CHeader, CSidebar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

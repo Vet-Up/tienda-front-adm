@@ -13,10 +13,6 @@ import { CategoryService } from '../../../core/services/category-service';
 export class CCategoriesManagement {
   categories: ICategory[] = [];
 
-  get filteredCategories(): ICategory[] {
-    return this.categories;
-  }
-
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
@@ -34,12 +30,17 @@ export class CCategoriesManagement {
   }
 
   deleteCategory(id: number): void {
+    if (!confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
+      return;
+    }
+
     this.categoryService.delete(id).subscribe({
       next: () => {
         this.categories = this.categories.filter(category => category.categoryId !== id);
       },
       error: (err) => {
         console.error('Error deleting category:', err);
+        alert('No se puede eliminar esta categoría porque tiene productos asociados');
       }
     });
   }

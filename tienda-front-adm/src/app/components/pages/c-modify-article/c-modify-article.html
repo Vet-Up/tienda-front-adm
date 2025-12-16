@@ -1,53 +1,53 @@
 <div class="c-modify-article">
   <!-- Header -->
   <header class="c-modify-article__header">
-    <h2 class="c-modify-article__title">Modificar Producto</h2>
+    <h2 class="c-modify-article__title">Edit Product</h2>
   </header>
 
   <!-- Formulario -->
   <form class="c-modify-article__form" (ngSubmit)="saveChanges()">
     
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="name">Nombre</label>
+      <label class="c-modify-article__label" for="name">Name</label>
       <input class="c-modify-article__input" id="name" type="text" [(ngModel)]="article.name" name="name" required />
     </div>
 
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="productDescription">Descripción</label>
+      <label class="c-modify-article__label" for="productDescription">Description</label>
       <textarea class="c-modify-article__textarea" id="productDescription" [(ngModel)]="article.productDescription" name="productDescription"></textarea>
     </div>
 
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="price">Precio (€)</label>
+      <label class="c-modify-article__label" for="price">Price (€)</label>
       <input class="c-modify-article__input" id="price" type="number" [(ngModel)]="article.price" name="price" required />
     </div>
 
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="discountedPrice">Precio con descuento (€)</label>
+      <label class="c-modify-article__label" for="discountedPrice">Discounted Price (€)</label>
       <input class="c-modify-article__input" id="discountedPrice" type="number" [(ngModel)]="article.discountedPrice" name="discountedPrice" />
     </div>
 
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="pictureProduct">Imagen (URL)</label>
+      <label class="c-modify-article__label" for="pictureProduct">Image (URL)</label>
       <input class="c-modify-article__input" id="pictureProduct" type="text" [(ngModel)]="article.pictureProduct" name="pictureProduct" />
     </div>
 
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="brand">Marca</label>
+      <label class="c-modify-article__label" for="brand">Brand</label>
       <input class="c-modify-article__input" id="brand" type="text" [(ngModel)]="article.brand" name="brand" />
     </div>
 
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="categoryId">Categoría ID</label>
+      <label class="c-modify-article__label" for="categoryId">Category ID</label>
       <input class="c-modify-article__input" id="categoryId" type="number" [(ngModel)]="article.categoryId" name="categoryId" />
     </div>
 
     <div class="c-modify-article__actions">
       <button class="c-modify-article__btn c-modify-article__btn--primary" type="submit">
-        Guardar cambios
+        Save Changes
       </button>
       <button class="c-modify-article__btn" type="button" (click)="cancel()">
-        Cancelar
+        Cancel
       </button>
     </div>
   </form>

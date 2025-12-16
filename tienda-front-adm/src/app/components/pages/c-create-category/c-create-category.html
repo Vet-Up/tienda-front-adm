@@ -1,28 +1,28 @@
 <div class="c-create-category">
   <!-- Header -->
   <header class="c-create-category__header">
-    <h2 class="c-create-category__title">Crear Categoría</h2>
+    <h2 class="c-create-category__title">Create Category</h2>
   </header>
 
   <!-- Formulario -->
   <form class="c-create-category__form" (ngSubmit)="createCategory()">
     
     <div class="c-create-category__group">
-      <label class="c-create-category__label" for="name">Nombre</label>
+      <label class="c-create-category__label" for="name">Name</label>
       <input class="c-create-category__input" id="name" type="text" [(ngModel)]="category.name" name="name" required />
     </div>
 
     <div class="c-create-category__group">
-      <label class="c-create-category__label" for="description">Descripción</label>
+      <label class="c-create-category__label" for="description">Description</label>
       <textarea class="c-create-category__textarea" id="description" [(ngModel)]="category.description" name="description"></textarea>
     </div>
 
     <div class="c-create-category__actions">
       <button class="c-create-category__btn c-create-category__btn--primary" type="submit">
-        Crear categoría
+        Create Category
       </button>
       <button class="c-create-category__btn" type="button" (click)="cancel()">
-        Cancelar
+        Cancel
       </button>
     </div>
   </form>

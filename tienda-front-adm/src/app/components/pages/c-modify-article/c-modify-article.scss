@@ -1,12 +1,38 @@
 .c-modify-article {
+  --modify-article-gap: var(--mlt-sys-spacing-6);
+  --modify-article-padding: var(--mlt-sys-spacing-7);
+  --modify-article-bg: var(--mlt-sys-color-background);
+  --modify-article-font-size: var(--mlt-sys-font-size-4);
+  --modify-article-radius: var(--mlt-sys-radius-lg);
+  --modify-article-border: var(--mlt-sys-color-border);
+  --modify-article-title-size: var(--mlt-sys-font-size-8);
+  --modify-article-title-weight: var(--mlt-sys-font-weight-semibold);
+  --modify-article-title-color: var(--mlt-sys-color-gray-800);
+  --modify-article-form-gap: var(--mlt-sys-spacing-5);
+  --modify-article-group-gap: var(--mlt-sys-spacing-1);
+  --modify-article-label-weight: var(--mlt-sys-font-weight-semibold);
+  --modify-article-label-color: var(--mlt-sys-color-gray-900);
+  --modify-article-input-padding-v: var(--mlt-sys-spacing-3);
+  --modify-article-input-padding-h: var(--mlt-sys-spacing-4);
+  --modify-article-input-border: var(--mlt-sys-color-gray-400);
+  --modify-article-input-radius: var(--mlt-sys-radius-md);
+  --modify-article-textarea-min-height: 100px;
+  --modify-article-actions-gap: var(--mlt-sys-spacing-4);
+  --modify-article-btn-gap: var(--mlt-sys-spacing-2);
+  --modify-article-btn-padding-v: var(--mlt-sys-spacing-3);
+  --modify-article-btn-padding-h: var(--mlt-sys-spacing-5);
+  --modify-article-btn-bg: var(--mlt-sys-color-gray-100);
+  --modify-article-btn-primary-bg: var(--mlt-sys-color-primary);
+  --modify-article-btn-primary-color: var(--mlt-sys-color-white);
+
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 32px;
-  background-color: #fafafa;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  gap: var(--modify-article-gap);
+  padding: var(--modify-article-padding);
+  background-color: var(--modify-article-bg);
+  font-size: var(--modify-article-font-size);
+  border-radius: var(--modify-article-radius);
+  border: 1px solid var(--modify-article-border);
 }
 
 .c-modify-article__header {
@@ -16,63 +42,63 @@
 }
 
 .c-modify-article__title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #333;
+  font-size: var(--modify-article-title-size);
+  font-weight: var(--modify-article-title-weight);
+  color: var(--modify-article-title-color);
 }
 
 .c-modify-article__form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--modify-article-form-gap);
 }
 
 .c-modify-article__group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--modify-article-group-gap);
 }
 
 .c-modify-article__label {
-  font-weight: 600;
-  color: #222;
+  font-weight: var(--modify-article-label-weight);
+  color: var(--modify-article-label-color);
 }
 
 .c-modify-article__input,
 .c-modify-article__textarea {
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: var(--modify-article-input-padding-v) var(--modify-article-input-padding-h);
+  border: 1px solid var(--modify-article-input-border);
+  border-radius: var(--modify-article-input-radius);
+  font-size: var(--modify-article-font-size);
 }
 
 .c-modify-article__textarea {
-  min-height: 100px;
+  min-height: var(--modify-article-textarea-min-height);
   resize: vertical;
 }
 
 .c-modify-article__actions {
   display: flex;
-  gap: 16px;
+  gap: var(--modify-article-actions-gap);
 }
 
 .c-modify-article__btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
+  gap: var(--modify-article-btn-gap);
+  padding: var(--modify-article-btn-padding-v) var(--modify-article-btn-padding-h);
+  border: 1px solid var(--modify-article-input-border);
+  background-color: var(--modify-article-btn-bg);
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: var(--modify-article-input-radius);
+  font-size: var(--modify-article-font-size);
 }
 
 .c-modify-article__btn--primary {
-  background-color: #002647;
-  color: #fff;
-  border-color: #002647;
+  background-color: var(--modify-article-btn-primary-bg);
+  color: var(--modify-article-btn-primary-color);
+  border-color: var(--modify-article-btn-primary-bg);
 }
 
 .c-modify-article__btn:disabled {

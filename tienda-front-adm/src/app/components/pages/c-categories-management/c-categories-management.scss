@@ -1,10 +1,33 @@
 .c-categories-management {
+  --categories-gap: var(--mlt-sys-spacing-7);
+  --categories-padding: var(--mlt-sys-spacing-9);
+  --categories-bg: var(--mlt-sys-color-background);
+  --categories-font-size: var(--mlt-sys-font-size-4);
+  --categories-actions-gap: var(--mlt-sys-spacing-4);
+  --categories-btn-gap: var(--mlt-sys-spacing-2);
+  --categories-btn-padding-v: var(--mlt-sys-spacing-3);
+  --categories-btn-padding-h: var(--mlt-sys-spacing-5);
+  --categories-btn-border: var(--mlt-sys-color-gray-400);
+  --categories-btn-bg: var(--mlt-sys-color-gray-100);
+  --categories-btn-radius: var(--mlt-sys-radius-md);
+  --categories-btn-primary-bg: var(--mlt-sys-color-primary);
+  --categories-btn-primary-color: var(--mlt-sys-color-white);
+  --categories-table-bg: var(--mlt-sys-color-white);
+  --categories-table-head-bg: var(--mlt-sys-color-gray-200);
+  --categories-table-border: var(--mlt-sys-color-border);
+  --categories-table-cell-padding: var(--mlt-sys-spacing-4);
+  --categories-table-link-color: var(--mlt-sys-color-black);
+  --categories-table-link-hover: var(--mlt-sys-color-primary);
+  --categories-actions-row-gap: var(--mlt-sys-spacing-1);
+  --categories-actions-row-margin: var(--mlt-sys-spacing-5);
+  --categories-icon-size: var(--mlt-sys-size-icon-md);
+
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding: 48px;
-  background-color: #fafafa;
-  font-size: 16px;
+  gap: var(--categories-gap);
+  padding: var(--categories-padding);
+  background-color: var(--categories-bg);
+  font-size: var(--categories-font-size);
 }
 
 /* Header */
@@ -16,26 +39,26 @@
 
 .c-categories-management__actions {
   display: flex;
-  gap: 16px;
+  gap: var(--categories-actions-gap);
 }
 
 .c-categories-management__btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
+  gap: var(--categories-btn-gap);
+  padding: var(--categories-btn-padding-v) var(--categories-btn-padding-h);
+  border: 1px solid var(--categories-btn-border);
+  background-color: var(--categories-btn-bg);
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: var(--categories-btn-radius);
+  font-size: var(--categories-font-size);
   transition: background-color 0.2s ease-in-out;
 }
 
 .c-categories-management__btn--primary {
-  background-color: #002647;
-  color: #fff;
-  border-color: #002647;
+  background-color: var(--categories-btn-primary-bg);
+  color: var(--categories-btn-primary-color);
+  border-color: var(--categories-btn-primary-bg);
 }
 
 /* Tabla */
@@ -47,39 +70,39 @@
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
-  background-color: #fff;
-  font-size: 16px;
+  background-color: var(--categories-table-bg);
+  font-size: var(--categories-font-size);
 }
 
 .c-categories-management__table-head {
-  background-color: #f0f0f0;
+  background-color: var(--categories-table-head-bg);
 }
 
 .c-categories-management__table-row {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--categories-table-border);
 }
 
 .c-categories-management__table-cell {
-  padding: 16px;
+  padding: var(--categories-table-cell-padding);
   text-align: left;
   vertical-align: middle;
 }
 
 .c-categories-management__table-link {
-  color: #000;
+  color: var(--categories-table-link-color);
   cursor: pointer;
   text-decoration: underline;
 }
 
 .c-categories-management__table-link:hover {
-  color: #002647;
+  color: var(--categories-table-link-hover);
 }
 
 /* Botones de acción en cada fila */
 .c-categories-management__actions-row {
   display: flex;
-  gap: 8px;
-  margin-left: 20px;
+  gap: var(--categories-actions-row-gap);
+  margin-left: var(--categories-actions-row-margin);
 }
 
 .c-categories-management__iconbtn {
@@ -90,8 +113,8 @@
 
 .c-categories-management__iconbtn svg {
   fill: #ff0800;
-  width: 24px;
-  height: 24px;
+  width: var(--categories-icon-size);
+  height: var(--categories-icon-size);
   transition: transform 0.2s ease-in-out;
 }
 

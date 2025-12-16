@@ -1,20 +1,36 @@
 .c-header {
+  --header-font-family: var(--mlt-sys-font-family-primary);
+  --header-height: var(--mlt-sys-size-header-height);
+  --header-padding-h: var(--mlt-sys-spacing-6);
+  --header-bg: var(--mlt-sys-color-white);
+  --header-border: var(--mlt-sys-color-gray-400);
+  --header-gap: var(--mlt-sys-spacing-4);
+  --header-brand-name-weight: var(--mlt-sys-font-weight-bold);
+  --header-brand-name-size: var(--mlt-sys-font-size-5);
+  --header-brand-name-color: var(--mlt-sys-color-black);
+  --header-icon-size: var(--mlt-sys-size-icon-lg);
+  --header-icon-color: var(--mlt-sys-color-black);
+  --header-title-font-family: var(--mlt-sys-font-family-heading);
+  --header-title-size: var(--mlt-sys-font-size-6);
+  --header-title-weight: var(--mlt-sys-font-weight-bold);
+  --header-title-color: var(--mlt-sys-color-black);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 75px;
-  padding: 0 24px;
-  background: #ffffff;
-  border-bottom: 1px solid #cccccc;
+  height: var(--header-height);
+  padding: 0 var(--header-padding-h);
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  font-family: var(--header-font-family);
 }
-
 
 .c-header__left,
 .c-header__center,
 .c-header__right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--header-gap);
 }
 
 /* Branding */
@@ -30,22 +46,23 @@
 }
 
 .c-header__brand-name {
-  font-weight: 700;
-  font-size: 18px;
-  color: #000000;
+  font-weight: var(--header-brand-name-weight);
+  font-size: var(--header-brand-name-size);
+  color: var(--header-brand-name-color);
 }
 
 /* Centro */
 .c-header__icon svg {
-  width: 32px;
-  height: 32px;
-  color: #000000;
+  width: var(--header-icon-size);
+  height: var(--header-icon-size);
+  color: var(--header-icon-color);
 }
 
 .c-header__title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #000000;
+  font-family: var(--header-title-font-family);
+  font-size: var(--header-title-size);
+  font-weight: var(--header-title-weight);
+  color: var(--header-title-color);
 }
 
 /* Perfil */
@@ -59,7 +76,7 @@
 }
 
 .c-header__profile-avatar svg {
-  width: 32px;
-  height: 32px;
-  color: #000000;
+  width: var(--header-icon-size);
+  height: var(--header-icon-size);
+  color: var(--header-icon-color);
 }

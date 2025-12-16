@@ -1,12 +1,38 @@
 .c-create-article {
+  --create-article-gap: var(--mlt-sys-spacing-6);
+  --create-article-padding: var(--mlt-sys-spacing-7);
+  --create-article-bg: var(--mlt-sys-color-background);
+  --create-article-font-size: var(--mlt-sys-font-size-4);
+  --create-article-radius: var(--mlt-sys-radius-lg);
+  --create-article-border: var(--mlt-sys-color-border);
+  --create-article-title-size: var(--mlt-sys-font-size-8);
+  --create-article-title-weight: var(--mlt-sys-font-weight-semibold);
+  --create-article-title-color: var(--mlt-sys-color-gray-800);
+  --create-article-form-gap: var(--mlt-sys-spacing-5);
+  --create-article-group-gap: var(--mlt-sys-spacing-1);
+  --create-article-label-weight: var(--mlt-sys-font-weight-semibold);
+  --create-article-label-color: var(--mlt-sys-color-gray-900);
+  --create-article-input-padding-v: var(--mlt-sys-spacing-3);
+  --create-article-input-padding-h: var(--mlt-sys-spacing-4);
+  --create-article-input-border: var(--mlt-sys-color-gray-400);
+  --create-article-input-radius: var(--mlt-sys-radius-md);
+  --create-article-textarea-min-height: 100px;
+  --create-article-actions-gap: var(--mlt-sys-spacing-4);
+  --create-article-btn-gap: var(--mlt-sys-spacing-2);
+  --create-article-btn-padding-v: var(--mlt-sys-spacing-3);
+  --create-article-btn-padding-h: var(--mlt-sys-spacing-5);
+  --create-article-btn-bg: var(--mlt-sys-color-gray-100);
+  --create-article-btn-primary-bg: var(--mlt-sys-color-primary);
+  --create-article-btn-primary-color: var(--mlt-sys-color-white);
+
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 32px;
-  background-color: #fafafa;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  gap: var(--create-article-gap);
+  padding: var(--create-article-padding);
+  background-color: var(--create-article-bg);
+  font-size: var(--create-article-font-size);
+  border-radius: var(--create-article-radius);
+  border: 1px solid var(--create-article-border);
 }
 
 .c-create-article__header {
@@ -16,63 +42,63 @@
 }
 
 .c-create-article__title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #333;
+  font-size: var(--create-article-title-size);
+  font-weight: var(--create-article-title-weight);
+  color: var(--create-article-title-color);
 }
 
 .c-create-article__form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--create-article-form-gap);
 }
 
 .c-create-article__group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--create-article-group-gap);
 }
 
 .c-create-article__label {
-  font-weight: 600;
-  color: #222;
+  font-weight: var(--create-article-label-weight);
+  color: var(--create-article-label-color);
 }
 
 .c-create-article__input,
 .c-create-article__textarea {
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: var(--create-article-input-padding-v) var(--create-article-input-padding-h);
+  border: 1px solid var(--create-article-input-border);
+  border-radius: var(--create-article-input-radius);
+  font-size: var(--create-article-font-size);
 }
 
 .c-create-article__textarea {
-  min-height: 100px;
+  min-height: var(--create-article-textarea-min-height);
   resize: vertical;
 }
 
 .c-create-article__actions {
   display: flex;
-  gap: 16px;
+  gap: var(--create-article-actions-gap);
 }
 
 .c-create-article__btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
+  gap: var(--create-article-btn-gap);
+  padding: var(--create-article-btn-padding-v) var(--create-article-btn-padding-h);
+  border: 1px solid var(--create-article-input-border);
+  background-color: var(--create-article-btn-bg);
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: var(--create-article-input-radius);
+  font-size: var(--create-article-font-size);
 }
 
 .c-create-article__btn--primary {
-  background-color: #002647;
-  color: #fff;
-  border-color: #002647;
+  background-color: var(--create-article-btn-primary-bg);
+  color: var(--create-article-btn-primary-color);
+  border-color: var(--create-article-btn-primary-bg);
 }
 
 .c-create-article__btn:disabled {

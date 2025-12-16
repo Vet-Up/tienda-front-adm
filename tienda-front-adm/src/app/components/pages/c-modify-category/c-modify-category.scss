@@ -1,12 +1,38 @@
 .c-modify-category {
+  --modify-category-gap: var(--mlt-sys-spacing-6);
+  --modify-category-padding: var(--mlt-sys-spacing-7);
+  --modify-category-bg: var(--mlt-sys-color-background);
+  --modify-category-font-size: var(--mlt-sys-font-size-4);
+  --modify-category-radius: var(--mlt-sys-radius-lg);
+  --modify-category-border: var(--mlt-sys-color-border);
+  --modify-category-title-size: var(--mlt-sys-font-size-8);
+  --modify-category-title-weight: var(--mlt-sys-font-weight-semibold);
+  --modify-category-title-color: var(--mlt-sys-color-gray-800);
+  --modify-category-form-gap: var(--mlt-sys-spacing-5);
+  --modify-category-group-gap: var(--mlt-sys-spacing-1);
+  --modify-category-label-weight: var(--mlt-sys-font-weight-semibold);
+  --modify-category-label-color: var(--mlt-sys-color-gray-900);
+  --modify-category-input-padding-v: var(--mlt-sys-spacing-3);
+  --modify-category-input-padding-h: var(--mlt-sys-spacing-4);
+  --modify-category-input-border: var(--mlt-sys-color-gray-400);
+  --modify-category-input-radius: var(--mlt-sys-radius-md);
+  --modify-category-textarea-min-height: 100px;
+  --modify-category-actions-gap: var(--mlt-sys-spacing-4);
+  --modify-category-btn-gap: var(--mlt-sys-spacing-2);
+  --modify-category-btn-padding-v: var(--mlt-sys-spacing-3);
+  --modify-category-btn-padding-h: var(--mlt-sys-spacing-5);
+  --modify-category-btn-bg: var(--mlt-sys-color-gray-100);
+  --modify-category-btn-primary-bg: var(--mlt-sys-color-primary);
+  --modify-category-btn-primary-color: var(--mlt-sys-color-white);
+
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 32px;
-  background-color: #fafafa;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  gap: var(--modify-category-gap);
+  padding: var(--modify-category-padding);
+  background-color: var(--modify-category-bg);
+  font-size: var(--modify-category-font-size);
+  border-radius: var(--modify-category-radius);
+  border: 1px solid var(--modify-category-border);
 }
 
 .c-modify-category__header {
@@ -16,63 +42,63 @@
 }
 
 .c-modify-category__title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #333;
+  font-size: var(--modify-category-title-size);
+  font-weight: var(--modify-category-title-weight);
+  color: var(--modify-category-title-color);
 }
 
 .c-modify-category__form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--modify-category-form-gap);
 }
 
 .c-modify-category__form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--modify-category-group-gap);
 }
 
 .c-modify-category__form-group label {
-  font-weight: 600;
-  color: #222;
+  font-weight: var(--modify-category-label-weight);
+  color: var(--modify-category-label-color);
 }
 
 .c-modify-category__form-group input,
 .c-modify-category__form-group textarea {
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: var(--modify-category-input-padding-v) var(--modify-category-input-padding-h);
+  border: 1px solid var(--modify-category-input-border);
+  border-radius: var(--modify-category-input-radius);
+  font-size: var(--modify-category-font-size);
 }
 
 .c-modify-category__form-group textarea {
-  min-height: 100px;
+  min-height: var(--modify-category-textarea-min-height);
   resize: vertical;
 }
 
 .c-modify-category__actions {
   display: flex;
-  gap: 16px;
+  gap: var(--modify-category-actions-gap);
 }
 
 .c-modify-category__btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
+  gap: var(--modify-category-btn-gap);
+  padding: var(--modify-category-btn-padding-v) var(--modify-category-btn-padding-h);
+  border: 1px solid var(--modify-category-input-border);
+  background-color: var(--modify-category-btn-bg);
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: var(--modify-category-input-radius);
+  font-size: var(--modify-category-font-size);
 }
 
 .c-modify-category__btn--primary {
-  background-color: #002647;
-  color: #fff;
-  border-color: #002647;
+  background-color: var(--modify-category-btn-primary-bg);
+  color: var(--modify-category-btn-primary-color);
+  border-color: var(--modify-category-btn-primary-bg);
 }
 
 .c-modify-category__btn:disabled {
