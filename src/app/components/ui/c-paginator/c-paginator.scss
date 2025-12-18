@@ -1,0 +1,59 @@
+.c-paginator {
+  --paginator-gap: var(--mlt-sys-spacing-4);
+  --paginator-btn-padding-v: var(--mlt-sys-spacing-3);
+  --paginator-btn-padding-h: var(--mlt-sys-spacing-5);
+  --paginator-btn-gap: var(--mlt-sys-spacing-2);
+  --paginator-btn-bg: var(--mlt-sys-color-white);
+  --paginator-btn-border: var(--mlt-sys-color-gray-400);
+  --paginator-btn-color: var(--mlt-sys-color-gray-900);
+  --paginator-btn-hover-bg: var(--mlt-sys-color-gray-100);
+  --paginator-btn-disabled-color: var(--mlt-sys-color-gray-400);
+  --paginator-btn-disabled-bg: var(--mlt-sys-color-gray-50);
+  --paginator-btn-radius: var(--mlt-sys-radius-md);
+  --paginator-info-color: var(--mlt-sys-color-gray-700);
+  --paginator-font-size: var(--mlt-sys-font-size-4);
+  --paginator-svg-size: var(--mlt-sys-size-icon-sm);
+  --paginator-info-min-width: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--paginator-gap);
+  font-size: var(--paginator-font-size);
+}
+
+.c-paginator__btn {
+  display: flex;
+  align-items: center;
+  gap: var(--paginator-btn-gap);
+  padding: var(--paginator-btn-padding-v) var(--paginator-btn-padding-h);
+  background-color: var(--paginator-btn-bg);
+  color: var(--paginator-btn-color);
+  border: 1px solid var(--paginator-btn-border);
+  border-radius: var(--paginator-btn-radius);
+  cursor: pointer;
+  font-size: var(--paginator-font-size);
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover:not(:disabled) {
+    background-color: var(--paginator-btn-hover-bg);
+  }
+
+  &:disabled {
+    color: var(--paginator-btn-disabled-color);
+    background-color: var(--paginator-btn-disabled-bg);
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: var(--paginator-svg-size);
+    height: var(--paginator-svg-size);
+  }
+}
+
+.c-paginator__info {
+  color: var(--paginator-info-color);
+  font-weight: var(--mlt-sys-font-weight-medium);
+  min-width: var(--paginator-info-min-width);
+  text-align: center;
+}

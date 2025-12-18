@@ -38,7 +38,7 @@ export class ArticleService {
 
   update(id: number, article: IArticle): Observable<IArticle> {
   return this.http.put<IArticle>(`${this.apiUrl}/${id}`, article);
-}
+  }
 
 
   delete(id: number): Observable<void> {

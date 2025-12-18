@@ -1,4 +1,5 @@
 .c-modify-category {
+  --modify-category-font-family: var(--mlt-sys-font-family-primary);
   --modify-category-gap: var(--mlt-sys-spacing-6);
   --modify-category-padding: var(--mlt-sys-spacing-7);
   --modify-category-bg: var(--mlt-sys-color-background);
@@ -31,6 +32,7 @@
   padding: var(--modify-category-padding);
   background-color: var(--modify-category-bg);
   font-size: var(--modify-category-font-size);
+  font-family: var(--modify-category-font-family);
   border-radius: var(--modify-category-radius);
   border: 1px solid var(--modify-category-border);
 }

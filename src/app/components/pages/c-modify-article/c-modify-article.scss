@@ -1,4 +1,5 @@
 .c-modify-article {
+  --modify-article-font-family: var(--mlt-sys-font-family-primary);
   --modify-article-gap: var(--mlt-sys-spacing-6);
   --modify-article-padding: var(--mlt-sys-spacing-7);
   --modify-article-bg: var(--mlt-sys-color-background);
@@ -31,6 +32,7 @@
   padding: var(--modify-article-padding);
   background-color: var(--modify-article-bg);
   font-size: var(--modify-article-font-size);
+  font-family: var(--modify-article-font-family);
   border-radius: var(--modify-article-radius);
   border: 1px solid var(--modify-article-border);
 }

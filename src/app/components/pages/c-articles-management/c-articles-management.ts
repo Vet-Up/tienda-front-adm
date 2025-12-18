@@ -5,121 +5,130 @@ import { ArticleService } from '../../../core/services/article-service';
 import { CategoryService } from '../../../core/services/category-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from "@angular/router";
+import { RouterLink, Router, ActivatedRoute } from "@angular/router";
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { CPaginator } from '../../ui/c-paginator/c-paginator';
 
 @Component({
   selector: 'app-c-articles-management',
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, CommonModule, RouterLink, CPaginator],
   templateUrl: './c-articles-management.html',
   styleUrl: './c-articles-management.scss',
 })
 export class CArticlesManagement {
-  articles:IArticle[] = [];
-  pageNumber = 1;
+  articles: IArticle[] = [];
+  categories: ICategory[] = [];
+  selectedCategory = 0;
+  
+  // Paginación
+  currentPage = 1;
   pageSize = 10;
   totalElements = 0;
-  searchTerm: string = '';
-  selectedCategory: number = 0;
 
-  categories: ICategory[] = [];
-
-  constructor(private articleService: ArticleService, private categoryService: CategoryService) {}
+  constructor(
+    private articleService: ArticleService, 
+    private categoryService: CategoryService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.loadCategories();
-    this.loadArticles();
+    // Leer página desde query params
+    this.route.queryParams.subscribe(params => {
+      this.currentPage = params['page'] ? parseInt(params['page']) : 1;
+      this.loadCategories();
+      this.loadArticles();
+    });
   }
 
+  // Cargar datos
   loadCategories(): void {
     this.categoryService.getAll().subscribe({
-      next: (response) => {
-        console.log('Categorías recibidas:', response);
-        this.categories = response;
-      },
+      next: (response) => this.categories = response,
       error: (err) => console.error('Error cargando categorías', err)
     });
   }
 
-  loadArticles(page: number = 1): void {
+  loadArticles(): void {
     const categoryId = Number(this.selectedCategory);
-    this.articleService.getAll(page, this.pageSize, categoryId).subscribe({
+    this.articleService.getAll(this.currentPage, this.pageSize, categoryId).subscribe({
       next: (response) => {
         this.articles = response.data;
-        this.pageNumber = response.pageNumber;
-        this.pageSize = response.pageSize;
         this.totalElements = response.totalElements;
+
+        // Si la página actual está vacía y no es la primera, ir a la última página válida
+        const maxPage = Math.ceil(this.totalElements / this.pageSize);
+        if (this.articles.length === 0 && this.currentPage > 1 && maxPage > 0) {
+          this.onPageChange(maxPage);
+        }
       },
       error: (err) => console.error('Error cargando artículos', err)
     });
   }
 
-  changePage(page: number): void {
-    this.loadArticles(page);
-  }
-  
-  get pages(): number[] {
-    const totalPages = Math.ceil(this.totalElements / this.pageSize);
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
-  }
-
-  get filteredArticles(): IArticle[] {
-    if (!this.searchTerm.trim()) return this.articles;
-    const term = this.searchTerm.toLowerCase();
-    return this.articles.filter(a => a.name?.toLowerCase().includes(term));
+  onCategoryChange(): void {
+    // Resetear a página 1 cuando cambia el filtro
+    this.currentPage = 1;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: 1 },
+      queryParamsHandling: 'merge'
+    });
+    // Recargar artículos con la nueva categoría
+    this.loadArticles();
   }
 
-  deleteArticle(id: number) {
+  // Paginación
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page },
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  // Acciones
+  deleteArticle(id: number): void {
+    if (!confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+      return;
+    }
+
     this.articleService.delete(id).subscribe({
       next: () => {
-        this.articles = this.articles.filter(article => article.productId !== id);
+        // Recargar para actualizar totalElements y ajustar páginas si es necesario
+        this.loadArticles();
       },
-      error: (err) => {
-        console.error('Error deleting article:', err);
-      }
+      error: (err) => console.error('Error eliminando artículo:', err)
     });
   }
 
   exportToPdf(): void {
-    // Cargar TODOS los productos (página 1, tamaño muy grande)
     const categoryId = Number(this.selectedCategory);
-    this.articleService.getAll(1, 10000, categoryId).subscribe({
+    this.articleService.getAll(1, 999999, categoryId).subscribe({
       next: (response) => {
-        let allArticles = response.data;
-        
-        // Aplicar filtro de búsqueda si existe
-        if (this.searchTerm.trim()) {
-          const term = this.searchTerm.toLowerCase();
-          allArticles = allArticles.filter(a => a.name?.toLowerCase().includes(term));
-        }
-        
-        this.generatePdf(allArticles);
+        this.generatePdf(response.data);
       },
-      error: (err) => console.error('Error al cargar artículos para exportar', err)
+      error: (err) => console.error('Error exportando artículos', err)
     });
   }
 
   private generatePdf(articles: IArticle[]): void {
     const doc = new jsPDF();
-    
-    // Título
     doc.setFontSize(18);
     doc.text('Lista de Productos', 14, 22);
-    
-    // Fecha
     doc.setFontSize(10);
     doc.text(`Generado: ${new Date().toLocaleDateString()}`, 14, 30);
     doc.text(`Total: ${articles.length} productos`, 14, 36);
     
-    // Tabla con todos los artículos
     const data = articles.map(a => [
       a.productId,
       a.name,
       `${a.price.toFixed(2)} €`,
-      a.discountedPrice && a.discountedPrice > 0 ? `${a.discountedPrice.toFixed(2)} €` : 'Sin descuento',
+      a.discountedPrice > 0 ? `${a.discountedPrice.toFixed(2)} €` : '-',
       a.brand,
-      this.getCategoryName(a.categoryId)
+      this.categories.find(c => c.categoryId === a.categoryId)?.name || '-'
     ]);
     
     autoTable(doc, {
@@ -131,10 +140,6 @@ export class CArticlesManagement {
     });
     
     doc.save('productos.pdf');
-  }
-
-  getCategoryName(id: number): string {
-    return this.categories.find(c => c.categoryId === id)?.name || 'Sin categoría';
   }
 
 }

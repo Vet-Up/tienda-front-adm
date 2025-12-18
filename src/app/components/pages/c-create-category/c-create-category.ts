@@ -27,7 +27,7 @@ export class CCreateCategory {
         this.router.navigate(['/categories']);
       },
       error: (err) => {
-        console.error('Error al crear categoría', err);
+        alert('Error al crear categoría,hay que rellenar todos los campos obligatorios');
       }
     });
   }

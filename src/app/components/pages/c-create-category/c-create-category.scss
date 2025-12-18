@@ -1,4 +1,5 @@
 .c-create-category {
+  --create-category-font-family: var(--mlt-sys-font-family-primary);
   --create-category-gap: var(--mlt-sys-spacing-6);
   --create-category-padding: var(--mlt-sys-spacing-7);
   --create-category-bg: var(--mlt-sys-color-background);
@@ -31,6 +32,7 @@
   padding: var(--create-category-padding);
   background-color: var(--create-category-bg);
   font-size: var(--create-category-font-size);
+  font-family: var(--create-category-font-family);
   border-radius: var(--create-category-radius);
   border: 1px solid var(--create-category-border);
 }

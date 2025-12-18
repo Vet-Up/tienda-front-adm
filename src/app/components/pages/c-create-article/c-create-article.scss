@@ -1,4 +1,5 @@
 .c-create-article {
+  --create-article-font-family: var(--mlt-sys-font-family-primary);
   --create-article-gap: var(--mlt-sys-spacing-6);
   --create-article-padding: var(--mlt-sys-spacing-7);
   --create-article-bg: var(--mlt-sys-color-background);
@@ -31,6 +32,7 @@
   padding: var(--create-article-padding);
   background-color: var(--create-article-bg);
   font-size: var(--create-article-font-size);
+  font-family: var(--create-article-font-family);
   border-radius: var(--create-article-radius);
   border: 1px solid var(--create-article-border);
 }
