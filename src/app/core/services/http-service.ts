@@ -12,6 +12,10 @@ export class HttpService {
     return this.http.get<T>(url);
   }
 
+  getById<T>(url: string, id: number): Observable<T> {
+    return this.http.get<T>(`${url}/${id}`);
+  }
+
   post<T>(url: string, body: any): Observable<T> {
     return this.http.post<T>(url, body);
   }

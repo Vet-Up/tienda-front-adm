@@ -20,14 +20,14 @@ export class CArticlesManagement {
   articles: IArticle[] = [];
   categories: ICategory[] = [];
   selectedCategory = 0;
-  
+
   // Paginación
   currentPage = 1;
   pageSize = 10;
   totalElements = 0;
 
   constructor(
-    private articleService: ArticleService, 
+    private articleService: ArticleService,
     private categoryService: CategoryService,
     private router: Router,
     private route: ActivatedRoute
@@ -121,7 +121,7 @@ export class CArticlesManagement {
     doc.setFontSize(10);
     doc.text(`Generado: ${new Date().toLocaleDateString()}`, 14, 30);
     doc.text(`Total: ${articles.length} productos`, 14, 36);
-    
+
     const data = articles.map(a => [
       a.productId,
       a.name,
@@ -130,7 +130,7 @@ export class CArticlesManagement {
       a.brand,
       this.categories.find(c => c.categoryId === a.categoryId)?.name || '-'
     ]);
-    
+
     autoTable(doc, {
       startY: 42,
       head: [['ID', 'Nombre', 'Precio', 'Dto.', 'Marca', 'Categoría']],
@@ -138,7 +138,7 @@ export class CArticlesManagement {
       styles: { fontSize: 9 },
       headStyles: { fillColor: [66, 139, 202] }
     });
-    
+
     doc.save('productos.pdf');
   }
 

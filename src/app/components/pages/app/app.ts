@@ -1,7 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject} from '@angular/core';
+import { Router,RouterOutlet } from '@angular/router';
 import { CHeader, } from "../../ui/c-header/c-header";
 import { CSidebar } from '../../ui/c-sidebar/c-sidebar';
+import { AuthService } from '../../../core/services/auth-service';
+import { firstValueFrom } from 'rxjs';
 
 
 
@@ -11,6 +13,10 @@ import { CSidebar } from '../../ui/c-sidebar/c-sidebar';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
+
 export class App {
-  protected readonly title = signal('tienda-front-adm');
+  readonly router = inject(Router);
+  
+  async ngOnInit() {
+  }
 }

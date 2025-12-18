@@ -1,7 +1,7 @@
 .c-admin-layout {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 60px); // si el header mide 60px
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -14,7 +14,6 @@ app-sidebar {
 
 .c-admin-content {
   flex: 1;
-  padding: 20px;
   overflow-y: auto;
   background: var(--bg);
 }

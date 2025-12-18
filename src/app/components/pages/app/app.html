@@ -1,10 +1,14 @@
 <!-- Header arriba -->
-<app-c-header></app-c-header>
 
-<!-- Layout horizontal debajo del header -->
-<div class="c-admin-layout">
-  <app-c-sidebar></app-c-sidebar>
-  <div class="c-admin-content">
-    <router-outlet></router-outlet>
+
+  @if (router.url !== '/login') {
+    <app-c-header ></app-c-header>
+  } 
+  <div class="c-admin-layout">
+    @if (router.url !== '/login') {
+    <app-c-sidebar></app-c-sidebar>
+    }
+    <div class="c-admin-content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>

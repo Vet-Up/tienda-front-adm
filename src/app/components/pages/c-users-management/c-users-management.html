@@ -1,0 +1,68 @@
+<div class="user-management">
+  <h2 class="user-management__title">Gestión de Usuarios</h2>
+
+  <div class="user-management__search">
+    <input 
+      type="email" 
+      [(ngModel)]="searchEmail"
+      (keyup.enter)="searchUser()"
+      placeholder="Buscar por correo electrónico"
+      class="user-management__input"
+    />
+    <button 
+      (click)="searchUser()" 
+      class="user-management__button user-management__button--primary">
+      Buscar
+    </button>
+    @if (searchEmail) {
+      <button 
+        (click)="clearSearch()" 
+        class="user-management__button user-management__button--secondary">
+        Limpiar
+      </button>
+    }
+  </div>
+
+  @if (error) {
+    <div class="user-management__error">
+      {{ error }}
+    </div>
+  }
+
+  @if (user) {
+    <div class="user-card">
+      <h3 class="user-card__title">Información del Usuario</h3>
+      <div class="user-card__field">
+        <span class="user-card__label">Nombre:</span>
+        <span class="user-card__value">{{ user.name }}</span>
+      </div>
+      <div class="user-card__field">
+        <span class="user-card__label">Email:</span>
+        <span class="user-card__value">{{ user.email }}</span>
+      </div>
+      <div class="user-card__field">
+        <span class="user-card__label">Teléfono:</span>
+        <span class="user-card__value">{{ user.phone}}</span>
+      </div>
+      <div class="user-card__field">
+        <span class="user-card__label">UserName:</span>
+        <span class="user-card__value">{{ user.username}}</span>
+      </div>
+      <div class="user-card__field">
+        <span class="user-card__label">Rol:</span>
+        <span class="user-card__value">{{ user.isAdmin }}</span>
+      </div>
+      
+      <div class="user-card__actions">
+        <label class="user-card__label">Cambiar rol:</label>
+        <select 
+          [(ngModel)]="user.isAdmin" 
+          (change)="updateRole()"
+          class="user-management__select">
+          <option value="CUSTOMER">CUSTOMER</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
+      </div>
+    </div>
+  }
+</div>
