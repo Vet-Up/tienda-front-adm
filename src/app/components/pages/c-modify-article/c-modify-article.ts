@@ -47,6 +47,13 @@ export class CModifyArticle implements OnInit {
   }
 
   saveChanges(): void {
+    if (
+      this.article.discountedPrice &&
+      this.article.discountedPrice > this.article.price
+    ) {
+      alert('El precio con descuento no puede ser mayor que el precio normal.');
+      return;
+    }
     console.log('Datos a enviar:', this.article); // Verifica qué se envía
     this.articleService.update(this.article.productId, this.article).subscribe({
       next: (response) => {

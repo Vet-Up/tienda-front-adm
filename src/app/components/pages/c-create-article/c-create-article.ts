@@ -54,6 +54,13 @@ export class CCreateArticle {
   }
 
   createArticle(): void {
+    if (
+      this.article.discountedPrice &&
+      this.article.discountedPrice > this.article.price
+    ) {
+      alert('El precio con descuento no puede ser mayor que el precio normal.');
+      return;
+    }
     this.articleService.create(this.article).subscribe({
       next: (response) => {
         console.log('Artículo creado correctamente', response);
