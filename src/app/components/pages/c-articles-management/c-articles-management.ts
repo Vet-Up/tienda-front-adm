@@ -142,4 +142,9 @@ export class CArticlesManagement {
     doc.save('productos.pdf');
   }
 
+  getCategoryName(categoryId: number): string {
+    const category = this.categories.find(c => c.categoryId === categoryId);
+    return category ? category.name : '-';
+  }
+
 }

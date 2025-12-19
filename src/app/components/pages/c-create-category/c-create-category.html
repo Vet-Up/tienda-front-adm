@@ -5,7 +5,7 @@
   </header>
 
   <!-- Formulario -->
-  <form class="c-create-category__form" (ngSubmit)="createCategory()">
+  <form class="c-create-category__form" #categoryForm="ngForm" (ngSubmit)="createCategory(categoryForm)">
     
     <div class="c-create-category__group">
       <label class="c-create-category__label" for="name">Name</label>
@@ -14,7 +14,7 @@
 
     <div class="c-create-category__group">
       <label class="c-create-category__label" for="description">Description</label>
-      <textarea class="c-create-category__textarea" id="description" [(ngModel)]="category.description" name="description"></textarea>
+      <textarea class="c-create-category__textarea" id="description" [(ngModel)]="category.description" name="description" required></textarea>
     </div>
 
     <div class="c-create-category__actions">

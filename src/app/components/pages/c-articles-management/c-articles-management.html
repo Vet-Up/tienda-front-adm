@@ -59,7 +59,7 @@
               <img [src]="'img/' + product.pictureProduct" alt="{{ product.name }}" width="50" />
             </td>
             <td class="c-articles-management__table-cell">{{ product.brand }}</td>
-            <td class="c-articles-management__table-cell">{{ product.categoryId }}</td>
+            <td class="c-articles-management__table-cell">{{ getCategoryName(product.categoryId) }}</td>
             <td class="c-articles-management__table-cell">
               <div class="c-articles-management__actions-row">
                 <button class="c-articles-management__iconbtn" (click)="deleteArticle(product.productId)"><svg

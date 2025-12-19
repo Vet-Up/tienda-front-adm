@@ -4,7 +4,7 @@ import { ICategory } from '../../../core/models/i-category';
 import { IArticle } from '../../../core/models/i-article';
 import { ArticleService } from '../../../core/services/article-service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -53,7 +53,19 @@ export class CCreateArticle {
     });
   }
 
-  createArticle(): void {
+  createArticle(form: NgForm): void {
+    
+    if (this.article.price < 0 || this.article.discountedPrice < 0) {
+      alert('Los precios no pueden ser negativos.');
+      return;
+    }
+
+    if (!form.valid) {
+      alert('Por favor, rellena todos los campos obligatorios.');
+      return;
+    }
+
+
     if (
       this.article.discountedPrice &&
       this.article.discountedPrice > this.article.price
