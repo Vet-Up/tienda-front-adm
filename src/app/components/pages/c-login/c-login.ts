@@ -44,6 +44,9 @@ export class CLogin {
         });
       },
       error:(error: any) => {
+        if (error && error.status === 500) {
+          alert('Acceso denegado: solo administradores pueden ingresar');
+        }
         console.error('Error de login:', error);    
         this.loading = false;
       }

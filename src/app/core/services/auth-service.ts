@@ -69,6 +69,8 @@ export class AuthService {
 
   public logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
+    this.Observableuserv.next(null);
+    this.tokenVerified = false;
   }
 
 }
