@@ -3,14 +3,14 @@
 
   <div class="user-management__search">
     <input 
-      type="email" 
+      type="text" 
       [(ngModel)]="searchEmail"
-      (keyup.enter)="searchUser()"
+      (keyup.enter)="searchUsers()"
       placeholder="Buscar por correo electrónico"
       class="user-management__input"
     />
     <button 
-      (click)="searchUser()" 
+      (click)="searchUsers()" 
       class="user-management__button user-management__button--primary">
       Buscar
     </button>
@@ -29,39 +29,77 @@
     </div>
   }
 
-  @if (user) {
-    <div class="user-card">
-      <h3 class="user-card__title">Información del Usuario</h3>
-      <div class="user-card__field">
-        <span class="user-card__label">Nombre:</span>
-        <span class="user-card__value">{{ user.name }}</span>
-      </div>
-      <div class="user-card__field">
-        <span class="user-card__label">Email:</span>
-        <span class="user-card__value">{{ user.email }}</span>
-      </div>
-      <div class="user-card__field">
-        <span class="user-card__label">Teléfono:</span>
-        <span class="user-card__value">{{ user.phone}}</span>
-      </div>
-      <div class="user-card__field">
-        <span class="user-card__label">UserName:</span>
-        <span class="user-card__value">{{ user.username}}</span>
-      </div>
-      <div class="user-card__field">
-        <span class="user-card__label">Rol:</span>
-        <span class="user-card__value">{{ user.isAdmin }}</span>
-      </div>
-      
-      <div class="user-card__actions">
-        <label class="user-card__label">Cambiar rol:</label>
-        <select 
-          [(ngModel)]="user.isAdmin" 
-          (change)="updateRole()"
-          class="user-management__select">
-          <option value="CUSTOMER">CUSTOMER</option>
-          <option value="ADMIN">ADMIN</option>
-        </select>
+  @if (users.length > 0) {
+    <div class="user-management__list">
+      @for (user of users; track user.id) {
+        <div class="user-card" [class.user-card--selected]="selectedUser?.id === user.id">
+          <div class="user-card__header">
+            <h3 class="user-card__title">{{ user.name }}</h3>
+            <span class="user-card__role" [class.user-card__role--admin]="user.isAdmin === 'ADMIN'">
+              {{ user.isAdmin }}
+            </span>
+          </div>
+          <div class="user-card__body">
+            <div class="user-card__field">
+              <span class="user-card__label">Email:</span>
+              <span class="user-card__value">{{ user.email }}</span>
+            </div>
+            <div class="user-card__field">
+              <span class="user-card__label">Username:</span>
+              <span class="user-card__value">{{ user.username }}</span>
+            </div>
+            <div class="user-card__field">
+              <span class="user-card__label">Teléfono:</span>
+              <span class="user-card__value">{{ user.phone }}</span>
+            </div>
+          </div>
+          <div class="user-card__actions">
+            <button 
+              (click)="selectUser(user)" 
+              class="user-management__button user-management__button--primary">
+              Editar Rol
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <app-c-paginator
+      [totalElements]="totalElements"
+      [pageSize]="pageSize"
+      [currentPage]="currentPage"
+      (pageChange)="onPageChange($event)">
+    </app-c-paginator>
+  }
+
+  @if (selectedUser) {
+    <div class="user-management__modal-overlay" (click)="cancelEdit()">
+      <div class="user-management__modal" (click)="$event.stopPropagation()">
+        <h3 class="user-management__modal-title">Editar Rol de Usuario</h3>
+        <p class="user-management__modal-info">
+          <strong>{{ selectedUser.name }}</strong> ({{ selectedUser.email }})
+        </p>
+        <div class="user-management__modal-field">
+          <label class="user-card__label">Rol:</label>
+          <select 
+            [(ngModel)]="selectedUser.isAdmin" 
+            class="user-management__select">
+            <option value="CUSTOMER">CUSTOMER</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+        </div>
+        <div class="user-management__modal-actions">
+          <button 
+            (click)="updateRole()" 
+            class="user-management__button user-management__button--primary">
+            Guardar
+          </button>
+          <button 
+            (click)="cancelEdit()" 
+            class="user-management__button user-management__button--secondary">
+            Cancelar
+          </button>
+        </div>
       </div>
     </div>
   }
