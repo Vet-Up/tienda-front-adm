@@ -125,15 +125,16 @@ export class CArticlesManagement {
     const data = articles.map(a => [
       a.productId,
       a.name,
+      `${a.basePrice.toFixed(2)} €`,
       `${a.price.toFixed(2)} €`,
-      a.discountedPrice > 0 ? `${a.discountedPrice.toFixed(2)} €` : '-',
+      a.discountedPrice > 0 ? `${a.discountedPrice.toFixed(2)} %` : '-',
       a.brand,
       this.categories.find(c => c.categoryId === a.categoryId)?.name || '-'
     ]);
 
     autoTable(doc, {
       startY: 42,
-      head: [['ID', 'Nombre', 'Precio', 'Dto.', 'Marca', 'Categoría']],
+      head: [['ID', 'Nombre', 'Precio Base', 'Precio con Descuento', '% Descuento', 'Marca', 'Categoría']],
       body: data,
       styles: { fontSize: 9 },
       headStyles: { fillColor: [66, 139, 202] }

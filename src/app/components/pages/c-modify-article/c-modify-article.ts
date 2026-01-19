@@ -16,8 +16,9 @@ export class CModifyArticle implements OnInit {
     productId: 0,
     name: '',
     productDescription: '',
-    price: 0,
+    basePrice: 0,
     discountedPrice: 0,
+    price: 0,
     pictureProduct: '',
     brand: '',
     categoryId: 0
@@ -47,14 +48,17 @@ export class CModifyArticle implements OnInit {
   }
 
   saveChanges(): void {
-    if (
-      this.article.discountedPrice &&
-      this.article.discountedPrice > this.article.price
-    ) {
-      alert('El precio con descuento no puede ser mayor que el precio normal.');
+    if (this.article.basePrice < 0 || this.article.discountedPrice < 0) {
+      alert('El precio base y el descuento no pueden ser negativos.');
       return;
     }
-    console.log('Datos a enviar:', this.article); // Verifica qué se envía
+    if (this.article.discountedPrice > 100) {
+      alert('El descuento no puede ser mayor al 100%.');
+      return;
+    }
+    // Calcular el precio final antes de enviar
+    this.article.price = this.calculateFinalPrice();
+    console.log('Datos a enviar:', this.article);
     this.articleService.update(this.article.productId, this.article).subscribe({
       next: (response) => {
         console.log('Artículo actualizado correctamente', response);
@@ -64,6 +68,12 @@ export class CModifyArticle implements OnInit {
         console.error('Error al actualizar artículo', err);
       }
     });
+  }
+
+  calculateFinalPrice(): number {
+    if (this.article.basePrice == null) return 0;
+    const discount = this.article.basePrice * (this.article.discountedPrice / 100);
+    return +(this.article.basePrice - discount).toFixed(2);
   }
 
   cancel(): void {

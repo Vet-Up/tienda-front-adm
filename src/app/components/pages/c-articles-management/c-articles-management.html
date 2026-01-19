@@ -39,7 +39,7 @@
         <tr class="c-articles-management__table-row">
           <th class="c-articles-management__table-cell">ID</th>
           <th class="c-articles-management__table-cell">Name</th>
-          <th class="c-articles-management__table-cell">Price</th>
+          <th class="c-articles-management__table-cell">Base Price</th>
           <th class="c-articles-management__table-cell">Discounted Price</th>
           <th class="c-articles-management__table-cell">Image</th>
           <th class="c-articles-management__table-cell">Brand</th>
@@ -53,7 +53,7 @@
             <td class="c-articles-management__table-cell">{{ product.productId }}</td>
             <td class="c-articles-management__table-cell"><a class="c-articles-management__table-link"
                 routerLink="/products/{{product.productId}}/edit">{{ product.name }}</a></td>
-            <td class="c-articles-management__table-cell">{{ product.price | currency:'EUR' }}</td>
+            <td class="c-articles-management__table-cell">{{ product.basePrice | currency:'EUR' }}</td>
             <td class="c-articles-management__table-cell">{{ product.discountedPrice | currency:'EUR' }}</td>
             <td class="c-articles-management__table-cell">
               <img [src]="'img/' + product.pictureProduct" alt="{{ product.name }}" width="50" />

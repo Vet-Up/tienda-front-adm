@@ -18,13 +18,18 @@
     </div>
 
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="price">Price (€)</label>
-      <input class="c-modify-article__input" id="price" type="number" step="0.01" [(ngModel)]="article.price" name="price" required />
+      <label class="c-modify-article__label" for="basePrice">Base Price (€)</label>
+      <input class="c-modify-article__input" id="basePrice" type="number" step="0.01" min="0" [(ngModel)]="article.basePrice" name="basePrice" required />
     </div>
 
     <div class="c-modify-article__group">
-      <label class="c-modify-article__label" for="discountedPrice">Discounted Price (€)</label>
-      <input class="c-modify-article__input" id="discountedPrice" type="number" step="0.01" [(ngModel)]="article.discountedPrice" name="discountedPrice" />
+      <label class="c-modify-article__label" for="discountedPrice">Discount (%)</label>
+      <input class="c-modify-article__input" id="discountedPrice" type="number" step="0.01" min="0" max="100" [(ngModel)]="article.discountedPrice" name="discountedPrice" required />
+    </div>
+
+    <div class="c-modify-article__group">
+      <label class="c-modify-article__label" for="price">Final Price (€)</label>
+      <input class="c-modify-article__input" id="price" type="number" [value]="calculateFinalPrice()" readonly />
     </div>
 
     <div class="c-modify-article__group">

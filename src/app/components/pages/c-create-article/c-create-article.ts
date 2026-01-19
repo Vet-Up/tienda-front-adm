@@ -19,8 +19,9 @@ export class CCreateArticle {
     productId: 0,
     name: '',
     productDescription: '',
-    price: 0,
+    basePrice: 0,
     discountedPrice: 0,
+    price: 0,
     pictureProduct: '',
     brand: '',
     categoryId: 0
@@ -55,8 +56,8 @@ export class CCreateArticle {
 
   createArticle(form: NgForm): void {
     
-    if (this.article.price < 0 || this.article.discountedPrice < 0) {
-      alert('Los precios no pueden ser negativos.');
+    if (this.article.basePrice < 0 || this.article.discountedPrice < 0) {
+      alert('El precio base y el descuento no pueden ser negativos.');
       return;
     }
 
@@ -66,13 +67,13 @@ export class CCreateArticle {
     }
 
 
-    if (
-      this.article.discountedPrice &&
-      this.article.discountedPrice > this.article.price
-    ) {
-      alert('El precio con descuento no puede ser mayor que el precio normal.');
+    if (this.article.discountedPrice > 100) {
+      alert('El descuento no puede ser mayor al 100%.');
       return;
     }
+
+    // Calcular el precio final antes de enviar
+    this.article.price = this.calculateFinalPrice();
     this.articleService.create(this.article).subscribe({
       next: (response) => {
         console.log('Artículo creado correctamente', response);
@@ -82,6 +83,14 @@ export class CCreateArticle {
         alert('Error al crear artículo,hay que rellenar todos los campos obligatorios');
       }
     });
+
+  }
+
+  // Método para calcular el precio final
+  calculateFinalPrice(): number {
+    if (this.article.basePrice == null) return 0;
+    const discount = this.article.basePrice * (this.article.discountedPrice / 100);
+    return +(this.article.basePrice - discount).toFixed(2);
   }
 
   cancel(): void {
