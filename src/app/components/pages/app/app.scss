@@ -1,7 +1,7 @@
 .c-admin-layout {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  height: calc(100vh - var(--mlt-sys-size-header-height, 75px));
   overflow: hidden;
 }
 

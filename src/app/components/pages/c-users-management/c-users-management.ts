@@ -70,6 +70,7 @@ export class CUsersManagement {
         if (index !== -1) {
           this.users[index] = data;
         }
+        this.selectedUser = null;
       },
       error: () => this.error = 'Error al actualizar el rol'
     });
