@@ -36,8 +36,16 @@
 /* Header */
 .c-categories-management__header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--mlt-sys-spacing-6);
+}
+
+.c-categories-management__title {
+  font-size: var(--mlt-sys-font-size-10);
+  font-weight: var(--mlt-sys-font-weight-semibold);
+  color: var(--mlt-sys-color-text-primary);
+  margin: 0;
 }
 
 .c-categories-management__actions {

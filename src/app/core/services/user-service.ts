@@ -23,4 +23,8 @@ export class UserService {
   updateUser(user: IUser): Observable<IUser> {
     return this.http.put<IUser>(`${this.apiUrl}/${user.id}`, user);
   }
+
+  getAllUsers(page: number = 0, size: number = 10): Observable<IPage<IUser>> {
+    return this.http.get<IPage<IUser>>(`${this.apiUrl}?page=${page}&size=${size}`);
+  }
 }

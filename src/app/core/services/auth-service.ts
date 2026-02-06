@@ -9,7 +9,7 @@ import { IUser } from '../models/i-user';
 })
 export class AuthService {
 
-  private TOKEN_KEY = 'auth_token';
+  private TOKEN_KEY = 'auth_token_admin';
   private Observableuserv = new BehaviorSubject<IUser|null>(null);
   public user$ = this.Observableuserv.asObservable();
   private tokenVerified = false;

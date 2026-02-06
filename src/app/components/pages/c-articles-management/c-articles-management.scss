@@ -24,7 +24,7 @@
   --articles-table-img-radius: var(--mlt-sys-radius-md);
   --articles-table-img-max-width: 60px;
   --articles-actions-row-gap: var(--mlt-sys-spacing-1);
-  --articles-icon-size: var(--mlt-sys-spacing-7);
+  --articles-icon-size: var(--mlt-sys-size-icon-md);
   --articles-icon-margin: var(--mlt-sys-spacing-5);
   --articles-footer-gap: var(--mlt-sys-spacing-4);
   --articles-footer-margin: var(--mlt-sys-spacing-7);
@@ -38,13 +38,27 @@
   font-family: var(--articles-font-family);
 }
 
-/* Header */
 .c-articles-management__header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: flex-start;
-  flex-wrap: wrap;
   gap: var(--articles-header-gap);
+}
+
+.c-articles-management__title {
+  font-size:var(--mlt-sys-font-size-10);
+  font-weight: var(--mlt-sys-font-weight-semibold);
+  color: var(--mlt-sys-color-text-primary);
+  margin: 0;
+}
+
+.c-articles-management__header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: var(--articles-actions-gap);
 }
 
 .c-articles-management__actions {
@@ -83,7 +97,6 @@
   border: 1px solid var(--articles-btn-border);
 }
 
-/* Tabla */
 .c-articles-management__table-section {
   overflow-x: auto;
 }
@@ -124,7 +137,6 @@
   border-radius: var(--articles-table-img-radius);
 }
 
-/* Botones de acción en cada fila */
 .c-articles-management__actions-row {
   display: flex;
   gap: var(--articles-actions-row-gap);
@@ -141,7 +153,6 @@
   transition: transform 0.2s ease-in-out;
 }
 
-/* Footer */
 .c-articles-management__footer {
   display: flex;
   flex-direction: column;

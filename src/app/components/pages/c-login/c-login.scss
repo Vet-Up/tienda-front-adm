@@ -43,10 +43,17 @@
 
   font-family: var(--login-font-family);
   min-height: 100vh;
+  height: 100%;
+  width: 100%;
   background-image: var(--login-bg-img);
   background-size: var(--login-bg-size);
   background-position: var(--login-bg-pos);
   background-repeat: var(--login-bg-repeat);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
   &__container {
     min-height: 100vh;

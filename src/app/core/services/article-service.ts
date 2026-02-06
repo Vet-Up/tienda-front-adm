@@ -13,11 +13,9 @@ export class ArticleService {
   constructor(private http: HttpService) {}
 
   getAll(page: number = 1, size: number = 10, categoryId?: number): Observable<PageResponse<Article>> {
-    // Sin categoría: usa el endpoint normal paginado
     if (!categoryId || categoryId === 0) {
       return this.http.get<PageResponse<Article>>(`${this.apiUrl}?page=${page}&size=${size}`);
     }
-    // Con categoría: usa el endpoint de categoría (devuelve lista)
     return this.http.get<Article[]>(`${this.apiUrl}/category/${categoryId}?page=${page}&size=${size}`).pipe(
       map(data => ({
         data: data,
@@ -43,5 +41,9 @@ export class ArticleService {
 
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  getProductsOrdered(order: string, page: number = 1, size: number = 20): Observable<PageResponse<Article>> {
+    return this.http.get<PageResponse<Article>>(`${this.apiUrl}/ordered?order=${order}&page=${page}&size=${size}`);
   }
 }

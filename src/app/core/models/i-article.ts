@@ -3,9 +3,11 @@ export interface IArticle {
   name: string;
   productDescription: string;
   basePrice: number; // Precio base
-  discountedPrice: number; // Porcentaje de descuento (0-100)
-  price: number; // Precio final calculado
+  discount: number; 
+  price: number; 
   pictureProduct: string;
   brand: string;
   categoryId: number;
+  stock: number;
+  averageRating: number; 
 }

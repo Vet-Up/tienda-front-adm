@@ -89,7 +89,6 @@ export class CArticlesManagement {
     });
   }
 
-  // Acciones
   deleteArticle(id: number): void {
     if (!confirm('¿Estás seguro de que deseas eliminar este producto?')) {
       return;
@@ -97,7 +96,6 @@ export class CArticlesManagement {
 
     this.articleService.delete(id).subscribe({
       next: () => {
-        // Recargar para actualizar totalElements y ajustar páginas si es necesario
         this.loadArticles();
       },
       error: (err) => console.error('Error eliminando artículo:', err)
@@ -127,14 +125,15 @@ export class CArticlesManagement {
       a.name,
       `${a.basePrice.toFixed(2)} €`,
       `${a.price.toFixed(2)} €`,
-      a.discountedPrice > 0 ? `${a.discountedPrice.toFixed(2)} %` : '-',
+      a.discount > 0 ? `${a.discount.toFixed(2)} %` : '-',
       a.brand,
-      this.categories.find(c => c.categoryId === a.categoryId)?.name || '-'
+      this.categories.find(c => c.categoryId === a.categoryId)?.name || '-',
+      a.averageRating > 0 ? a.averageRating.toFixed(2) : '-'
     ]);
 
     autoTable(doc, {
       startY: 42,
-      head: [['ID', 'Nombre', 'Precio Base', 'Precio con Descuento', '% Descuento', 'Marca', 'Categoría']],
+      head: [['ID', 'Nombre', 'Precio Base', 'Precio con Descuento', '% Descuento', 'Marca', 'Categoría', 'Calificación Promedio']],
       body: data,
       styles: { fontSize: 9 },
       headStyles: { fillColor: [66, 139, 202] }

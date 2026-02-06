@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth-service';
 
@@ -15,7 +15,8 @@ export class CHeader {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private elementRef: ElementRef
   ) {
   }
 
@@ -31,6 +32,14 @@ export class CHeader {
 
   toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside && this.showDropdown) {
+      this.showDropdown = false;
+    }
   }
 
   logout(): void {

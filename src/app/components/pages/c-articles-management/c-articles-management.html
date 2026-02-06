@@ -1,7 +1,9 @@
 <div class="c-articles-management">
 
   <header class="c-articles-management__header">
-    <div class="c-articles-management__actions">
+    <h2 class="c-articles-management__title">Products Management</h2>
+    <div class="c-articles-management__header-content">
+      <div class="c-articles-management__actions">
       <button class="c-articles-management__btn c-articles-management__btn--primary" routerLink="/products/new">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
           viewBox="0 0 16 16">
@@ -31,6 +33,7 @@
         }
       </select>
     </div>
+    </div>
   </header>
 
   <section class="c-articles-management__table-section">
@@ -44,6 +47,7 @@
           <th class="c-articles-management__table-cell">Image</th>
           <th class="c-articles-management__table-cell">Brand</th>
           <th class="c-articles-management__table-cell">Category</th>
+          <th class="c-articles-management__table-cell">Avg Rating</th>
           <th class="c-articles-management__table-cell">Actions</th>
         </tr>
       </thead>
@@ -54,12 +58,13 @@
             <td class="c-articles-management__table-cell"><a class="c-articles-management__table-link"
                 routerLink="/products/{{product.productId}}/edit">{{ product.name }}</a></td>
             <td class="c-articles-management__table-cell">{{ product.basePrice | currency:'EUR' }}</td>
-            <td class="c-articles-management__table-cell">{{ product.discountedPrice | currency:'EUR' }}</td>
+            <td class="c-articles-management__table-cell">{{ product.price | currency:'EUR' }}</td>
             <td class="c-articles-management__table-cell">
               <img [src]="'img/' + product.pictureProduct" alt="{{ product.name }}" width="50" />
             </td>
             <td class="c-articles-management__table-cell">{{ product.brand }}</td>
             <td class="c-articles-management__table-cell">{{ getCategoryName(product.categoryId) }}</td>
+            <td class="c-articles-management__table-cell">{{ product.averageRating | number:'1.1-2' }}</td>
             <td class="c-articles-management__table-cell">
               <div class="c-articles-management__actions-row">
                 <button class="c-articles-management__iconbtn" (click)="deleteArticle(product.productId)"><svg

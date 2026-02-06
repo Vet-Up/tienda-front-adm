@@ -20,11 +20,13 @@ export class CCreateArticle {
     name: '',
     productDescription: '',
     basePrice: 0,
-    discountedPrice: 0,
+    discount: 0,
     price: 0,
     pictureProduct: '',
     brand: '',
-    categoryId: 0
+    categoryId: 0,
+    stock: 0,
+    averageRating: 0
   };
 
 
@@ -56,8 +58,13 @@ export class CCreateArticle {
 
   createArticle(form: NgForm): void {
     
-    if (this.article.basePrice < 0 || this.article.discountedPrice < 0) {
+    if (this.article.basePrice < 0 || this.article.discount < 0) {
       alert('El precio base y el descuento no pueden ser negativos.');
+      return;
+    }
+
+    if (this.article.stock < 0) {
+      alert('El stock no puede ser negativo.');
       return;
     }
 
@@ -67,13 +74,11 @@ export class CCreateArticle {
     }
 
 
-    if (this.article.discountedPrice > 100) {
+    if (this.article.discount > 100) {
       alert('El descuento no puede ser mayor al 100%.');
       return;
     }
 
-    // Calcular el precio final antes de enviar
-    this.article.price = this.calculateFinalPrice();
     this.articleService.create(this.article).subscribe({
       next: (response) => {
         console.log('Artículo creado correctamente', response);
@@ -86,11 +91,10 @@ export class CCreateArticle {
 
   }
 
-  // Método para calcular el precio final
   calculateFinalPrice(): number {
     if (this.article.basePrice == null) return 0;
-    const discount = this.article.basePrice * (this.article.discountedPrice / 100);
-    return +(this.article.basePrice - discount).toFixed(2);
+    const discountAmount = this.article.basePrice * (this.article.discount / 100);
+    return +(this.article.basePrice - discountAmount).toFixed(2);
   }
 
   cancel(): void {

@@ -1,7 +1,7 @@
 .user-management {
 	--users-font-family: var(--mlt-sys-font-family-primary);
 	--users-gap: var(--mlt-sys-spacing-6);
-	--users-padding: var(--mlt-sys-spacing-7);
+	--users-padding:var(--mlt-sys-spacing-9);
 	--users-bg: var(--mlt-sys-color-background);
 	--users-font-size: var(--mlt-sys-font-size-4);
 	--users-header-gap: var(--mlt-sys-spacing-5);
@@ -28,16 +28,16 @@
 
 	padding: var(--users-padding);
 	max-width: var(--mlt-sys-size-max-width, 600px);
-	margin: 0 auto;
 	font-size: var(--users-font-size);
 	font-family: var(--users-font-family);
 
 	&__title {
 		margin-bottom: var(--users-header-gap);
-		color: var(--users-card-title-color);
-		font-family: var(--mlt-sys-font-family-heading, 'Poppins', sans-serif);
-		font-size: var(--mlt-sys-font-size-6, 20px);
-		font-weight: var(--mlt-sys-font-weight-semibold, 600);
+		color: var(--mlt-sys-color-text-primary);
+		font-family: var(--mlt-sys-font-family-primary);
+		font-size: var(--mlt-sys-font-size-10);
+		font-weight: var(--mlt-sys-font-weight-semibold);
+		margin: 0 0 var(--users-header-gap) 0;
 	}
 
 	&__search {

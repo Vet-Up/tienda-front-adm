@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IArticle } from '../../../core/models/i-article';
 import { ArticleService } from '../../../core/services/article-service';
+import { CategoryService } from '../../../core/services/category-service';
+import { ICategory } from '../../../core/models/i-category';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,24 +19,42 @@ export class CModifyArticle implements OnInit {
     name: '',
     productDescription: '',
     basePrice: 0,
-    discountedPrice: 0,
+    discount: 0,
     price: 0,
     pictureProduct: '',
     brand: '',
-    categoryId: 0
+    categoryId: 0,
+    stock: 0,
+    averageRating: 0
   };
+
+  categories: ICategory[] = [];
 
   constructor(
     private articleService: ArticleService,
+    private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.loadCategories();
     const id = this.route.snapshot.paramMap.get('productId');
     if (id) {
       this.loadArticle(+id);
     }
+  }
+
+  loadCategories(): void {
+    this.categoryService.getAll().subscribe({
+      next: (categories) => {
+        this.categories = categories;
+      },
+      error: (err) => {
+        console.error('Error al cargar categorías', err);
+        this.categories = [];
+      }
+    });
   }
 
   loadArticle(id: number): void {
@@ -48,16 +68,18 @@ export class CModifyArticle implements OnInit {
   }
 
   saveChanges(): void {
-    if (this.article.basePrice < 0 || this.article.discountedPrice < 0) {
+    if (this.article.basePrice < 0 || this.article.discount < 0) {
       alert('El precio base y el descuento no pueden ser negativos.');
       return;
     }
-    if (this.article.discountedPrice > 100) {
+    if (this.article.stock < 0) {
+      alert('El stock no puede ser negativo.');
+      return;
+    }
+    if (this.article.discount > 100) {
       alert('El descuento no puede ser mayor al 100%.');
       return;
     }
-    // Calcular el precio final antes de enviar
-    this.article.price = this.calculateFinalPrice();
     console.log('Datos a enviar:', this.article);
     this.articleService.update(this.article.productId, this.article).subscribe({
       next: (response) => {
@@ -72,8 +94,8 @@ export class CModifyArticle implements OnInit {
 
   calculateFinalPrice(): number {
     if (this.article.basePrice == null) return 0;
-    const discount = this.article.basePrice * (this.article.discountedPrice / 100);
-    return +(this.article.basePrice - discount).toFixed(2);
+    const discountAmount = this.article.basePrice * (this.article.discount / 100);
+    return +(this.article.basePrice - discountAmount).toFixed(2);
   }
 
   cancel(): void {
