@@ -10,7 +10,7 @@ import { IPage } from '../models/i-page';
 export class UserService {
   constructor(private http: HttpService) {}
 
-  private apiUrl = '/api/users';
+  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/users';
 
   getUserByEmail(email: string): Observable<IUser>  {
     return this.http.get<IUser>(`${this.apiUrl}/by-email?email=${email}`);

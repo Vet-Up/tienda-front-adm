@@ -15,7 +15,7 @@ export class AuthService {
   private tokenVerified = false;
   constructor(private httpService: HttpService) {
   }
-  private apiUrl = '/api/auth/login/ADMIN';
+  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/auth/login/ADMIN';
 
   login(username: string, password: string): Observable<ILoginResponse> {
     return this.httpService.post<ILoginResponse>(this.apiUrl, { username, password })
