@@ -49,7 +49,9 @@
       <label class="c-create-article__label" for="categoryId">Category</label>
       <select class="c-create-article__input" id="categoryId" [(ngModel)]="article.categoryId" name="categoryId" required>
         <option value="" disabled>Choose a category</option>
-        <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.name }}</option>
+        @for (category of categories; track category.categoryId) {
+          <option [value]="category.categoryId">{{ category.name }}</option>
+        }
       </select>
     </div>
 
