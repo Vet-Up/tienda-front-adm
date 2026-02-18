@@ -7,7 +7,7 @@ import { ICategory } from '../models/i-category';
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/categories';
+  private apiUrl = 'http://localhost:8080/api/categories';
 
   constructor(private http: HttpService) {}
 
