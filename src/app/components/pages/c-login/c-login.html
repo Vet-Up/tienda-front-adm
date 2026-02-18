@@ -1,17 +1,17 @@
-<div class="login">
-  <div class="login__container">
-    <div class="login__card">
-      <h1 class="login__title">Login</h1>
+<div class="c-login">
+  <div class="c-login__container">
+    <div class="c-login__card">
+      <h1 class="c-login__title">Login</h1>
       
       @if (error) {
-        <div class="login__error">
+        <div class="c-login__error">
           {{ error }}
         </div>
       }
       
-      <form class="login__form" (submit)="onSubmit($event)">
-        <div class="login__field">
-          <div class="login__input-wrapper">
+      <form class="c-login__form" (submit)="onSubmit($event)">
+        <div class="c-login__field">
+          <div class="c-login__input-wrapper">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="login__icon" viewBox="0 0 16 16">
               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
             </svg>
@@ -28,14 +28,14 @@
           </div>
         </div>
 
-        <div class="login__field">
-          <div class="login__input-wrapper">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="login__icon" viewBox="0 0 16 16">
+        <div class="c-login__field">
+          <div class="c-login__input-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="c-login__icon" viewBox="0 0 16 16">
               <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
             </svg>
             <input
               id="password"
-              class="login__input"
+              class="c-login__input"
               name="password"
               type="password"
               [(ngModel)]="password"
@@ -46,8 +46,8 @@
           </div>
         </div>
 
-        <div class="login__actions">
-          <button class="login__button" type="submit" [disabled]="loading">Login</button>
+        <div class="c-login__actions">
+          <button class="c-login__button" type="submit" [disabled]="loading">Login</button>
         </div>
       </form>
     </div>

@@ -1,62 +1,62 @@
-<div class="user-management">
-  <h2 class="user-management__title">Gestión de Usuarios</h2>
+<div class="c-user-management">
+  <h2 class="c-user-management__title">Gestión de Usuarios</h2>
 
-  <div class="user-management__search">
+  <div class="c-user-management__search">
     <input 
       type="text" 
       [(ngModel)]="searchEmail"
       (keyup.enter)="searchUsers()"
       placeholder="Buscar por correo electrónico"
-      class="user-management__input"
+      class="c-user-management__input"
     />
     <button 
       (click)="searchUsers()" 
-      class="user-management__button user-management__button--primary">
+      class="c-user-management__button c-user-management__button--primary">
       Buscar
     </button>
     @if (searchEmail) {
       <button 
         (click)="clearSearch()" 
-        class="user-management__button user-management__button--secondary">
+        class="c-user-management__button c-user-management__button--secondary">
         Limpiar
       </button>
     }
   </div>
 
   @if (error) {
-    <div class="user-management__error">
+    <div class="c-user-management__error">
       {{ error }}
     </div>
   }
 
   @if (users.length > 0) {
-    <div class="user-management__list">
+    <div class="c-user-management__list">
       @for (user of users; track user.id) {
-        <div class="user-card" [class.user-card--selected]="selectedUser?.id === user.id">
-          <div class="user-card__header">
-            <h3 class="user-card__title">{{ user.name }}</h3>
-            <span class="user-card__role" [class.user-card__role--admin]="user.isAdmin === 'ADMIN'">
+        <div class="c-user-card" [class.c-user-card--selected]="selectedUser?.id === user.id">
+          <div class="c-user-card__header">
+            <h3 class="c-user-card__title">{{ user.name }}</h3>
+            <span class="c-user-card__role" [class.c-user-card__role--admin]="user.isAdmin === 'ADMIN'">
               {{ user.isAdmin }}
             </span>
           </div>
-          <div class="user-card__body">
-            <div class="user-card__field">
-              <span class="user-card__label">Email:</span>
-              <span class="user-card__value">{{ user.email }}</span>
+          <div class="c-user-card__body">
+            <div class="c-user-card__field">
+              <span class="c-user-card__label">Email:</span>
+              <span class="c-user-card__value">{{ user.email }}</span>
             </div>
-            <div class="user-card__field">
-              <span class="user-card__label">Username:</span>
-              <span class="user-card__value">{{ user.username }}</span>
+            <div class="c-user-card__field">
+              <span class="c-user-card__label">Username:</span>
+              <span class="c-user-card__value">{{ user.username }}</span>
             </div>
-            <div class="user-card__field">
-              <span class="user-card__label">Teléfono:</span>
-              <span class="user-card__value">{{ user.phone }}</span>
+            <div class="c-user-card__field">
+              <span class="c-user-card__label">Teléfono:</span>
+              <span class="c-user-card__value">{{ user.phone }}</span>
             </div>
           </div>
-          <div class="user-card__actions">
+          <div class="c-user-card__actions">
             <button 
               (click)="selectUser(user)" 
-              class="user-management__button user-management__button--primary">
+              class="c-user-management__button c-user-management__button--primary">
               Editar Rol
             </button>
           </div>
@@ -73,30 +73,30 @@
   }
 
   @if (selectedUser) {
-    <div class="user-management__modal-overlay" (click)="cancelEdit()">
-      <div class="user-management__modal" (click)="$event.stopPropagation()">
-        <h3 class="user-management__modal-title">Editar Rol de Usuario</h3>
-        <p class="user-management__modal-info">
+    <div class="c-user-management__modal-overlay" (click)="cancelEdit()">
+      <div class="c-user-management__modal" (click)="$event.stopPropagation()">
+        <h3 class="c-user-management__modal-title">Editar Rol de Usuario</h3>
+        <p class="c-user-management__modal-info">
           <strong>{{ selectedUser.name }}</strong> ({{ selectedUser.email }})
         </p>
-        <div class="user-management__modal-field">
-          <label class="user-card__label">Rol:</label>
+        <div class="c-user-management__modal-field">
+          <label class="c-user-management__label">Rol:</label>
           <select 
             [(ngModel)]="selectedUser.isAdmin" 
-            class="user-management__select">
+            class="c-user-management__select">
             <option value="CUSTOMER">CUSTOMER</option>
             <option value="ADMIN">ADMIN</option>
           </select>
         </div>
-        <div class="user-management__modal-actions">
+        <div class="c-user-management__modal-actions">
           <button 
             (click)="updateRole()" 
-            class="user-management__button user-management__button--primary">
+            class="c-user-management__button c-user-management__button--primary">
             Guardar
           </button>
           <button 
             (click)="cancelEdit()" 
-            class="user-management__button user-management__button--secondary">
+            class="c-user-management__button c-user-management__button--secondary">
             Cancelar
           </button>
         </div>

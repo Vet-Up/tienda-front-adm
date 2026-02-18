@@ -1,4 +1,4 @@
-.user-management {
+.c-user-management {
 	--users-font-family: var(--mlt-sys-font-family-primary);
 	--users-gap: var(--mlt-sys-spacing-6);
 	--users-padding:var(--mlt-sys-spacing-9);
@@ -168,7 +168,7 @@
 	}
 }
 
-.user-card {
+.c-user-card {
 	background: var(--users-card-bg);
 	border: 1px solid var(--users-card-border);
 	border-radius: var(--users-card-radius);
