@@ -7,11 +7,11 @@
         id="productFilter" 
         class="c-reviews-management__select"
         [(ngModel)]="selectedProductId"
-        (change)="onProductChange()"
+        (ngModelChange)="onProductChange($event)"
       >
-        <option value="0">Select a product...</option>
+        <option [ngValue]="0">Select a product...</option>
         @for (product of products; track product.productId) {
-          <option [value]="product.productId">{{ product.name }}</option>
+          <option [ngValue]="product.productId">{{ product.name }}</option>
         }
       </select>
     </div>

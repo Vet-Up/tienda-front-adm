@@ -32,23 +32,32 @@ export class CReviewsManagement implements OnInit {
   }
 
   loadProducts(): void {
-    this.articleService.getAll(1, 1000).subscribe({
-      next: (response) => {
-        this.products = response.data || [];
+    this.articleService.getAll().subscribe({
+      next: (response: any) => {
+        this.products = Array.isArray(response) ? response : (response?.data || []);
       },
       error: (err) => console.error('Error loading products:', err)
     });
   }
 
   loadReviews(): void {
-    if (!this.selectedProductId) return;
+    const productId = Number(this.selectedProductId);
+    if (!productId) {
+      this.reviews = [];
+      this.filteredReviews = [];
+      this.totalElements = 0;
+      this.loading = false;
+      return;
+    }
 
     this.loading = true;
-    this.reviewService.getByProductId(this.selectedProductId, this.currentPage, this.pageSize).subscribe({
-      next: (response) => {
-        this.reviews = response.data || [];
+    const apiPage = Math.max(this.currentPage - 1, 0);
+    this.reviewService.getByProductId(productId, apiPage, this.pageSize).subscribe({
+      next: (response: any) => {
+        const reviews = Array.isArray(response) ? response : (response?.data || response?.content || []);
+        this.reviews = reviews;
         this.filteredReviews = this.reviews;
-        this.totalElements = response.totalElements || 0;
+        this.totalElements = response?.totalElements ?? this.reviews.length;
         this.loading = false;
       },
       error: (err) => {
@@ -58,7 +67,8 @@ export class CReviewsManagement implements OnInit {
     });
   }
 
-  onProductChange(): void {
+  onProductChange(productId?: number): void {
+    this.selectedProductId = Number(productId ?? this.selectedProductId);
     this.currentPage = 1;
     this.loadReviews();
   }
