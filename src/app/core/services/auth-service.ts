@@ -15,7 +15,7 @@ export class AuthService {
   private tokenVerified = false;
   constructor(private httpService: HttpService) {
   }
-  private apiUrl = 'http://localhost:8080/api/auth/login/ADMIN';
+  private apiUrl = '/api/auth/login/ADMIN';
 
   login(username: string, password: string): Observable<ILoginResponse> {
     return this.httpService.post<ILoginResponse>(this.apiUrl, { username, password })
@@ -39,7 +39,7 @@ export class AuthService {
       }
     }
     this.tokenVerified = true;
-    return this.httpService.get<IUser>('http://localhost:8080/api/auth/validate').pipe(
+    return this.httpService.get<IUser>('/api/auth/validate').pipe(
       timeout(5000),
       catchError((error) => {
         this.tokenVerified = false;

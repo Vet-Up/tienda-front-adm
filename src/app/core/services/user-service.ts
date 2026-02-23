@@ -10,7 +10,7 @@ import { IPage } from '../models/i-page';
 export class UserService {
   constructor(private http: HttpService) {}
 
-  private apiUrl = 'http://localhost:8080/api/users';
+  private apiUrl = '/api/users';
 
   getUserByEmail(email: string): Observable<IUser>  {
     return this.http.get<IUser>(`${this.apiUrl}/by-email?email=${email}`);
